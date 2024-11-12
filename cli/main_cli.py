@@ -5,10 +5,6 @@ def display_dashboard():
         print("1. Manajemen Data Karyawan")
         print("2. Pelacakan Kehadiran dan Cuti")
         print("3. Layanan Mandiri Karyawan")
-        print("4. Pelaporan dan Analisis")
-        print("5. Keamanan Berbasis Peran dan Kontrol Akses")
-        print("6. Exit")
-        
         choice = input("Pilih fitur (1-6): ")
 
         if choice == '1':
