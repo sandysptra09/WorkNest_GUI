@@ -1,0 +1,1 @@
+print('inialization main cli')
