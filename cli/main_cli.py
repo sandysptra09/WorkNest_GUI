@@ -1,32 +1,51 @@
+# main.py
 from employee_data_management_menu import manage_employee_data
 
 def display_dashboard():
     while True:
-        print("\n=== WorkNest Management Dashboard ===")
-        print("1. Manajemen Data Karyawan")
-        print("2. Pelacakan Kehadiran dan Cuti")
-        print("3. Layanan Mandiri Karyawan")
-        print("4. Pelaporan dan Analisis")
-        print("5. Keamanan Berbasis Peran dan Kontrol Akses")
-        print("6. Keluar dari Dashboard")
+        # display the dashboard
+        print("\n" + "=" * 60)
+        print("                🏢 WorkNest Management Dashboard                ")
+        print("=" * 60)
         
-        choice = input("Pilih fitur (1-6): ")
+        print("\n")
+        print("┌───────────────────────────────────────────────────────────────┐")
+        print("│  1. 📋 - Employee Data Management                              │")
+        print("│  2. 🕒 - Attendance and Leave Tracking                         │")
+        print("│  3. 🛠️  - Employee Self-Service                                 │")
+        print("│  4. 📊 - Reporting and Analytics                               │")
+        print("│  5. 🔒 - Role-Based Security and Access Control                │")
+        print("│  6. ❌ - Exit Dashboard                                        │")
+        print("└───────────────────────────────────────────────────────────────┘")
+        
+        # prompt user for input and handle a choice
+        choice = input("\nPlease select a feature (1-6): ").strip()
 
+        # handle user choice and call appropriate functions
         if choice == '1':
+            print("\n--- 📋 Employee Data Management ---")
             manage_employee_data()
         elif choice == '2':
-            print("Fitur Pelacakan Kehadiran dan Cuti - (Placeholder)")
+            print("\n--- 🕒 Attendance and Leave Tracking ---")
+            print("This feature is currently under development. (Placeholder)")
         elif choice == '3':
-            print("Fitur Layanan Mandiri Karyawan - (Placeholder)")
+            print("\n--- 🛠️ Employee Self-Service ---")
+            print("This feature is currently under development. (Placeholder)")
         elif choice == '4':
-            print("Fitur Pelaporan dan Analisis - (Placeholder)")
+            print("\n--- 📊 Reporting and Analytics ---")
+            print("This feature is currently under development. (Placeholder)")
         elif choice == '5':
-            print("Fitur Keamanan Berbasis Peran dan Kontrol Akses - (Placeholder)")
+            print("\n--- 🔒 Role-Based Security and Access Control ---")
+            print("This feature is currently under development. (Placeholder)")
         elif choice == '6':
-            print("Keluar dari dashboard...")
+            print("\nThank you for using the WorkNest Management Dashboard. Exiting...")
             break
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
+            print("\n⚠️ Invalid choice. Please select a valid option (1-6).")
+        
+        # pause for user input before returning to the main menu
+        input("\nPress Enter to return to the main menu...")
 
 if __name__ == "__main__":
+    print("Initializing Main CLI...\n")
     display_dashboard()
