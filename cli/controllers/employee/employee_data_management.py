@@ -3,6 +3,8 @@
 import sys
 import os
 
+from configs.db_connection import create_connection
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../configs')))
 
 def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address):
