@@ -10,12 +10,12 @@ def display_dashboard():
         
         print("\n")
         print("┌───────────────────────────────────────────────────────────────┐")
-        print("│  1. 📋 - Employee Data Management                              │")
-        print("│  2. 🕒 - Attendance and Leave Tracking                         │")
-        print("│  3. 🛠️  - Employee Self-Service                                 │")
-        print("│  4. 📊 - Reporting and Analytics                               │")
-        print("│  5. 🔒 - Role-Based Security and Access Control                │")
-        print("│  6. ❌ - Exit Dashboard                                        │")
+        print("│  1. 📋 - Employee Data Management                             │")
+        print("│  2. 🕒 - Attendance and Leave Tracking                        │")
+        print("│  3. 🛠️  - Employee Self-Service                                │")
+        print("│  4. 📊 - Reporting and Analytics                              │")
+        print("│  5. 🔒 - Role-Based Security and Access Control               │")
+        print("│  6. ❌ - Exit Dashboard                                       │")
         print("└───────────────────────────────────────────────────────────────┘")
         
         # prompt user for input and handle a choice

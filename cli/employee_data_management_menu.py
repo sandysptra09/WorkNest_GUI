@@ -7,31 +7,37 @@ from controllers.employee.employee_data_management import (
 
 def manage_employee_data():
     while True:
-        print("\n--- Manajemen Data Karyawan ---")
-        print("1. Tambah Karyawan")
-        print("2. Lihat Karyawan")
-        print("3. Perbarui Karyawan")
-        print("4. Hapus Karyawan")
-        print("5. Kembali ke Menu Utama")
+        # Display the Employee Data Management menu
+        print("\n" + "=" * 60)
+        print("                📋 Employee Data Management                ")
+        print("=" * 60)
+        print("\n")
+        print("┌───────────────────────────────────────────────────────────────┐")
+        print("│  1. ➕  - Add Employee                                        │")
+        print("│  2. 👁️   - View Employee                                       │")
+        print("│  3. ✏️   - Update Employee                                     │")
+        print("│  4. 🗑️   - Delete Employee                                     │")
+        print("│  5. 🔙  - Return to Main Menu                                 │")
+        print("└───────────────────────────────────────────────────────────────┘")
         
-        choice = input("Pilih menu [1-5]: ")
+        choice = input("Select an option [1-5]: ")
 
         if choice == '1':
-            name = input("Masukkan nama karyawan: ")
-            position = input("Masukkan posisi karyawan: ")
+            name = input("Enter employee's name: ")
+            position = input("Enter employee's position: ")
             add_employee(name, position)
         elif choice == '2':
-            employee_id = input("Masukkan ID karyawan: ")
+            employee_id = input("Enter employee ID: ")
             view_employee(employee_id)
         elif choice == '3':
-            employee_id = input("Masukkan ID karyawan: ")
-            name = input("Masukkan nama baru (atau kosong untuk tidak mengubah): ")
-            position = input("Masukkan posisi baru (atau kosong untuk tidak mengubah): ")
+            employee_id = input("Enter employee ID: ")
+            name = input("Enter new name (leave blank to keep current): ")
+            position = input("Enter new position (leave blank to keep current): ")
             update_employee(employee_id, name if name else None, position if position else None)
         elif choice == '4':
-            employee_id = input("Masukkan ID karyawan: ")
+            employee_id = input("Enter employee ID: ")
             delete_employee(employee_id)
         elif choice == '5':
             break
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
+            print("Invalid choice. Please try again.")
