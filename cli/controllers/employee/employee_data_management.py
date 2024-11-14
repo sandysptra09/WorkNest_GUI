@@ -1,6 +1,7 @@
 # 
 from configs.db_connection import create_connection
 
+# function add employee
 def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address):
     connection = create_connection()
     cursor = connection.cursor()
@@ -18,6 +19,7 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
         cursor.close()
         connection.close()
 
+# function view employee with id
 def view_employee(employee_id):
     connection = create_connection()
     cursor = connection.cursor()
@@ -35,6 +37,7 @@ def view_employee(employee_id):
         cursor.close()
         connection.close()
 
+# function update employee
 def update_employee(employee_id, name=None, gender=None, birth_place=None, birth_date=None, phone=None, religion=None, marital_status=None, address=None):
     connection = create_connection()
     cursor = connection.cursor()
@@ -77,6 +80,7 @@ def update_employee(employee_id, name=None, gender=None, birth_place=None, birth
         cursor.close()
         connection.close()
 
+# function delete employee
 def delete_employee(employee_id):
     connection = create_connection()
     cursor = connection.cursor()
