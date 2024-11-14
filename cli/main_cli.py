@@ -1,5 +1,7 @@
 # main.py
 from employee_data_management_menu import manage_employee_data
+from employee_self_service import manage_employee_data_self_service
+
 
 def display_dashboard():
     while True:
@@ -30,7 +32,7 @@ def display_dashboard():
             print("This feature is currently under development. (Placeholder)")
         elif choice == '3':
             print("\n--- 🛠️ Employee Self-Service ---")
-            print("This feature is currently under development. (Placeholder)")
+            manage_employee_data_self_service()
         elif choice == '4':
             print("\n--- 📊 Reporting and Analytics ---")
             print("This feature is currently under development. (Placeholder)")
@@ -49,3 +51,4 @@ def display_dashboard():
 if __name__ == "__main__":
     print("Initializing Main CLI...\n")
     display_dashboard()
+
