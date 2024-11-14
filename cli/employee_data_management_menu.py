@@ -1,6 +1,7 @@
 from controllers.employee.employee_data_management import (
     add_employee,
     view_employee,
+    view_all_employees,
     update_employee,
     delete_employee
 )
@@ -16,16 +17,17 @@ def manage_employee_data():
         print("\n")
         print("┌───────────────────────────────────────────────────────────────┐")
         print("│  1. ➕  - Add Employee                                        │")
-        print("│  2. 👁️   - View Employee                                       │")
-        print("│  3. ✏️   - Update Employee                                     │")
-        print("│  4. 🗑️   - Delete Employee                                     │")
-        print("│  5. 🔙  - Return to Main Menu                                 │")
+        print("│  2. 👁️   - View Employee (by ID)                               │")
+        print("│  3. 👀  - View All Employees                                  │")  
+        print("│  4. ✏️   - Update Employee                                     │")
+        print("│  5. 🗑️   - Delete Employee                                     │")
+        print("│  6. 🔙  - Return to Main Menu                                 │")
         print("└───────────────────────────────────────────────────────────────┘")
         
-        choice = input("Select an option [1-5]: ")
+        choice = input("Select an option [1-6]: ")
 
         if choice == '1':
-            # add employee
+            # Add employee
             nip = input("Enter employee NIP: ")
             nik = input("Enter employee NIK: ")
             name = input("Enter employee's name: ")
@@ -40,11 +42,15 @@ def manage_employee_data():
             add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address)
 
         elif choice == '2':
-            # view employee
+            # view employee by ID
             employee_id = input("Enter employee ID: ")
             view_employee(employee_id)
 
         elif choice == '3':
+            # view all employees
+            view_all_employees()
+
+        elif choice == '4':
             # update employee
             employee_id = input("Enter employee ID: ")
             name = input("Enter new name (leave blank to keep current): ")
@@ -58,12 +64,12 @@ def manage_employee_data():
 
             update_employee(employee_id, name, gender, birth_place, birth_date, phone, religion, marital_status, address)
 
-        elif choice == '4':
+        elif choice == '5':
             # delete Employee
             employee_id = input("Enter employee ID: ")
             delete_employee(employee_id)
 
-        elif choice == '5':
+        elif choice == '6':
             break  
         else:
             print("Invalid choice. Please try again.")
