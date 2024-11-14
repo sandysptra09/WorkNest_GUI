@@ -4,7 +4,9 @@ from controllers.employee.employee_data_management import (
     update_employee,
     delete_employee
 )
+from configs.db_connection import create_connection
 
+# function to manage employee data
 def manage_employee_data():
     while True:
         # display the Employee Data Management menu
@@ -14,16 +16,16 @@ def manage_employee_data():
         print("\n")
         print("┌───────────────────────────────────────────────────────────────┐")
         print("│  1. ➕  - Add Employee                                        │")
-        print("│  2. 👁️   - View Employee                                      │")
-        print("│  3. ✏️   - Update Employee                                    │")
-        print("│  4. 🗑️   - Delete Employee                                    │")
-        print("│  5. 🔙  - Return to Main Menu                                │")
+        print("│  2. 👁️   - View Employee                                       │")
+        print("│  3. ✏️   - Update Employee                                     │")
+        print("│  4. 🗑️   - Delete Employee                                     │")
+        print("│  5. 🔙  - Return to Main Menu                                 │")
         print("└───────────────────────────────────────────────────────────────┘")
         
         choice = input("Select an option [1-5]: ")
 
         if choice == '1':
-            # input field
+            # add employee
             nip = input("Enter employee NIP: ")
             nik = input("Enter employee NIK: ")
             name = input("Enter employee's name: ")
@@ -38,12 +40,13 @@ def manage_employee_data():
             add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address)
 
         elif choice == '2':
+            # view employee
             employee_id = input("Enter employee ID: ")
             view_employee(employee_id)
 
         elif choice == '3':
+            # update employee
             employee_id = input("Enter employee ID: ")
-            # optional fields can be updated individually
             name = input("Enter new name (leave blank to keep current): ")
             gender = input("Enter new gender (leave blank to keep current): ")
             birth_place = input("Enter new birth place (leave blank to keep current): ")
@@ -56,10 +59,11 @@ def manage_employee_data():
             update_employee(employee_id, name, gender, birth_place, birth_date, phone, religion, marital_status, address)
 
         elif choice == '4':
+            # delete Employee
             employee_id = input("Enter employee ID: ")
             delete_employee(employee_id)
 
         elif choice == '5':
-            break
+            break  
         else:
             print("Invalid choice. Please try again.")
