@@ -11,14 +11,27 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
             """
             cursor.execute(query, (nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address))
             connection.commit()
-            print(f"\n{'='*60}")
-            print(f"📋  Employee Added: {name}")
-            print(f"  - Position: {marital_status}")
-            print(f"{'='*60}")
+            
+            # enhanced Success Message
+            print(f"\n{'=' * 60}")
+            print(f"🎉 Employee Successfully Added!")
+            print(f"{'-' * 60}")
+            print(f"📄 Name           : {name}")
+            print(f"📌 Position       : {marital_status}")
+            print(f"🆔 NIP            : {nip}")
+            print(f"🆔 NIK            : {nik}")
+            print(f"🌍 Birth Place    : {birth_place}")
+            print(f"🎂 Birth Date     : {birth_date}")
+            print(f"📱 Phone          : {phone}")
+            print(f"🙏 Religion       : {religion}")
+            print(f"🏡 Address        : {address}")
+            print(f"{'=' * 60}\n")
+            
     except Exception as e:
-        print(f"\nError: {e}")
+        print(f"\n❌ Error occurred while adding employee: {e}")
     finally:
         connection.close()
+
 
 # function to view employee details by ID
 def view_employee(employee_id):
@@ -84,8 +97,13 @@ def view_all_employees():
     finally:
         connection.close()
 
-# function to update employee details
+# function to update employee details with confirmation
 def update_employee(employee_id, name=None, gender=None, birth_place=None, birth_date=None, phone=None, religion=None, marital_status=None, address=None):
+    confirmation = input("Are you sure you want to update this employee's data? (yes/no): ").strip().lower()
+    if confirmation != 'yes':
+        print("Update canceled.")
+        return
+
     try:
         connection = create_connection()
         with connection.cursor() as cursor:
@@ -128,8 +146,13 @@ def update_employee(employee_id, name=None, gender=None, birth_place=None, birth
     finally:
         connection.close()
 
-# function to delete employee
+# function to delete employee with confirmation
 def delete_employee(employee_id):
+    confirmation = input("Are you sure you want to delete this employee? (yes/no): ").strip().lower()
+    if confirmation != 'yes':
+        print("Deletion canceled.")
+        return
+
     try:
         connection = create_connection()
         with connection.cursor() as cursor:
