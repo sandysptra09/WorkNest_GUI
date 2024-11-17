@@ -1,6 +1,6 @@
-from auth import login
-from admin_dashboard import admin_dashboard
-from employee_dashboard import employee_dashboard
+from auth.auth import login
+from pages.admin_dashboard import admin_dashboard
+from pages.employee_dashboard import employee_dashboard
 
 def main():
     print("Welcome to WorkNest CLI!")
