@@ -27,7 +27,7 @@ def manage_employee_data():
         choice = input("Select an option [1-6]: ")
 
         if choice == '1':
-            # Add employee
+            # input for add employee
             nip = input("Enter employee NIP: ")
             nik = input("Enter employee NIK: ")
             name = input("Enter employee's name: ")
@@ -38,8 +38,11 @@ def manage_employee_data():
             religion = input("Enter employee's religion (leave blank if not available): ")
             marital_status = input("Enter marital status (Single/Married/Divorced): ")
             address = input("Enter employee's address: ")
+            email = input("Enter employee's email: ")  
+            password = input("Enter employee's password: ")  
             
-            add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address)
+            # pass email and password to add_employee
+            add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address, email, password)
 
         elif choice == '2':
             # view employee by ID

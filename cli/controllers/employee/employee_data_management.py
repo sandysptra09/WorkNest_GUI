@@ -1,18 +1,22 @@
+import bcrypt
 from configs.db_connection import create_connection
 
 # function to add employee
-def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address):
+def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address, email, password):
     try:
         connection = create_connection()
         with connection.cursor() as cursor:
+            # hash the password before saving it to the database
+            hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode('utf-8')
+            
             query = """
-                INSERT INTO employees (nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address) 
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO employees (nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address, email, password) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
-            cursor.execute(query, (nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address))
+            cursor.execute(query, (nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address, email, hashed_password))
             connection.commit()
             
-            # enhanced Success Message
+            # success message
             print(f"\n{'=' * 60}")
             print(f"🎉 Employee Successfully Added!")
             print(f"{'-' * 60}")
@@ -25,12 +29,14 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
             print(f"📱 Phone          : {phone}")
             print(f"🙏 Religion       : {religion}")
             print(f"🏡 Address        : {address}")
+            print(f"📧 Email          : {email}")
             print(f"{'=' * 60}\n")
             
     except Exception as e:
         print(f"\n❌ Error occurred while adding employee: {e}")
     finally:
         connection.close()
+
 
 
 # function to view employee details by ID
