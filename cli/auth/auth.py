@@ -10,8 +10,8 @@ def login():
             print("🔐 Login to WorkNest")
             print("=" * 60)
             
-            email = input("Email: ").strip()
-            password = getpass("Password: ").strip()
+            email = input("📧  Email: ").strip()
+            password = getpass(" Password: ").strip()
             
             # query to search for users by email
             query = "SELECT * FROM employees WHERE email = %s"
@@ -23,8 +23,7 @@ def login():
                 hashed_password = user['password']  
                 
                 # hash password in database
-                if bcrypt.checkpw(password.encode(), hashed_password.encode()):  # Validasi hash
-                    print("\n✅ Login successful!")
+                if bcrypt.checkpw(password.encode(), hashed_password.encode()):
                     return user  
                 else:
                     print("\n❌ Invalid password. Please try again.")
