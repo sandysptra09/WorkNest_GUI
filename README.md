@@ -1,12 +1,12 @@
 # WorkNest Employee Management System
 
-## 📖 Deskripsi Proyek
+## 📖 Project Description
 
 WorkNest is a desktop-based employee management system designed to help small to medium-sized organizations manage employee data, track attendance, handle leave management, and generate performance reports and analytics. This project uses Python with GUI frameworks such as Tkinter or PyQt, enabling an intuitive interface across multiple operating systems including Windows, macOS, and Linux.
 
 ---
 
-## 🎯 Tujuan Proyek
+## 🎯 Project Goals
 
 1. **Simplify Employee Data Management**: Provide a centralized platform to store and manage employee data.
 2. **Streamline HR Processes**: Support attendance tracking, leave requests, and employee performance management.
