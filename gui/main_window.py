@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
+from gui.widgets.employee_widgets import show_admin_interface, show_karyawan_interface
 # from employee_management.controllers.dataManajemen import load_data, save_data
 
 class EmployeeManagementApp:
@@ -40,9 +41,9 @@ class EmployeeManagementApp:
             
             if username == "admin" and password == "admin123":
                 self.current_user = "admin"
-                self.show_admin_interface()
+                show_admin_interface(self)
             elif any(emp['username'] == username and emp['password'] == password for emp in self.karyawan_data):
                 self.current_user = username
-                self.show_karyawan_interface()
+                show_karyawan_interface(self)
             else:
                 messagebox.showerror("Error", "Username atau password salah.")
