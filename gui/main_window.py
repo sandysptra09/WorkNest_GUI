@@ -47,3 +47,71 @@ class EmployeeManagementApp:
                 show_karyawan_interface(self)
             else:
                 messagebox.showerror("Error", "Username atau password salah.")
+
+    def manage_employees(self):
+        self.admin_frame.destroy()
+        self.manage_frame = tk.Frame(self.root)
+        self.manage_frame.pack(pady=50)
+        self.manage_frame.configure(bg='#ffffff')
+
+        title_label = tk.Label(
+        self.manage_frame, 
+        text="Manajemen Data Karyawan", 
+        foreground='#2596be', 
+        bg='#ffffff', 
+        font=("Poppins", 14, "bold")
+        )
+            
+        title_label.grid(row=0, column=0, columnspan=2, pady=(0, 15))
+
+        tk.Label(self.manage_frame, text="Nama", foreground='#333', bg='#ffffff', font=("Poppins", 10)).grid(row=1, column=0, sticky="e", padx=(0, 10), pady=(0, 10))
+        self.name_entry = tk.Entry(self.manage_frame, bg='#e0e0e0', font=("Poppins", 10), width=30, relief="flat")
+        self.name_entry.grid(row=1, column=1, pady=(0, 10))
+
+        tk.Label(self.manage_frame, text="Username", foreground='#333', bg='#ffffff', font=("Poppins", 10)).grid(row=2, column=0, sticky="e", padx=(0, 10), pady=(0, 10))
+        self.username_entry = tk.Entry(self.manage_frame, bg='#e0e0e0', font=("Poppins", 10), width=30, relief="flat")
+        self.username_entry.grid(row=2, column=1, pady=(0, 10))
+
+        tk.Label(self.manage_frame, text="Password", foreground='#333', bg='#ffffff', font=("Poppins", 10)).grid(row=3, column=0, sticky="e", padx=(0, 10), pady=(0, 10))
+        self.password_entry = tk.Entry(self.manage_frame, show='*', bg='#e0e0e0', font=("Poppins", 10), width=30, relief="flat")
+        self.password_entry.grid(row=3, column=1, pady=(0, 10))
+
+        add_button = tk.Button(
+        self.manage_frame, 
+        text="Tambah Karyawan", 
+        command=self.add_employee, 
+        foreground='#ffffff', 
+        bg='#2596be', 
+        font=("Poppins", 10, "bold"), 
+        relief="flat", 
+        width=20,
+        pady=5
+        )
+        add_button.grid(row=4, column=0, columnspan=2, pady=(10, 20))
+
+        self.employee_listbox = tk.Listbox(
+        self.manage_frame, 
+        width=40, 
+        height=10, 
+        foreground='#333333', 
+        bg='#e0e0e0', 
+        font=("Poppins", 10), 
+        relief="flat", 
+        selectbackground="#2596be"
+        )
+        self.employee_listbox.grid(row=5, column=0, columnspan=2, pady=(10, 10), padx=(5, 5))
+
+        back_button = tk.Button(
+        self.manage_frame, 
+        text="Kembali", 
+        command=self.go_back_to_admin1, 
+        foreground='#ffffff', 
+        bg='#b90000', 
+        font=("Poppins", 10, "bold"), 
+        relief="flat", 
+        width=20,
+        pady=5
+        )
+        back_button.grid(row=6, column=0, columnspan=2, pady=(10, 0))
+            
+        self.update_employee_list()
