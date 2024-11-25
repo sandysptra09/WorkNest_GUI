@@ -42,7 +42,8 @@ def manage_employee_data():
             password = input("Enter employee's password: ")  
             
             # pass email and password to add_employee
-            add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address, email, password)
+            add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, 
+                         marital_status, address, email, password)
 
         elif choice == '2':
             # view employee by ID
