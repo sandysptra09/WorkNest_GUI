@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
-from gui.widgets.employee_widgets import show_admin_interface, show_karyawan_interface
+from gui.pages.admin_dashboard import show_admin_interface
+from gui.pages.employee_dashboard import show_karyawan_interface
 # from employee_management.controllers.dataManajemen import load_data, save_data
 
 class EmployeeManagementApp:
@@ -42,9 +43,11 @@ class EmployeeManagementApp:
             if username == "admin" and password == "admin123":
                 self.current_user = "admin"
                 show_admin_interface(self)
+                print("Logged in as \'Admin\'")
             elif any(emp['username'] == username and emp['password'] == password for emp in self.karyawan_data):
                 self.current_user = username
                 show_karyawan_interface(self)
+                print("Logged in as \'Karyawan\'")
             else:
                 messagebox.showerror("Error", "Username atau password salah.")
 
@@ -115,3 +118,24 @@ class EmployeeManagementApp:
         back_button.grid(row=6, column=0, columnspan=2, pady=(10, 0))
             
         self.update_employee_list()
+
+    def employee_tracking(self):
+        self.admin_frame.destroy()
+        self.tracking_frame = tk.Frame(self.root)
+        self.tracking_frame.pack(pady=20)
+        self.tracking_frame.configure(bg='#333333')
+            
+        tk.Label(self.tracking_frame, text="Pelacak Kehadiran Karyawan", foreground='#ffffff' , bg='#333333').grid(row=0, columnspan=2)
+            
+        self.employee_listbox = tk.Listbox(self.tracking_frame, width=50, foreground='#ffffff' , bg='#454545')
+        self.employee_listbox.grid(row=2, columnspan=2, pady=20)
+            
+        for emp in self.karyawan_data:
+            self.employee_listbox.insert(tk.END, f"{emp['name']} ({emp['username']})")
+
+        tk.Button(self.tracking_frame, text="Tandai Kehadiran", command=self.mark_attendance, foreground='#ffffff' , bg='#454545').grid(row=3, columnspan=2)
+        tk.Button(self.tracking_frame, text="Tampilkan Kehadiran", command=self.show_attendance, foreground='#ffffff' , bg='#454545').grid(row=5, columnspan=2)
+        tk.Button(self.tracking_frame, text="Kembali", command=self.go_back_to_admin2, foreground='#ffffff' , bg='#b90000').grid(row=7, columnspan=2)
+            
+        names = [emp['name'] for emp in self.karyawan_data]
+        ttk.Combobox(self.tracking_frame, values=names).grid(row=9, columnspan=2)
