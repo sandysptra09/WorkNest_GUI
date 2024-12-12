@@ -38,13 +38,17 @@ class EmployeeManagementApp:
             username = self.username_entry.get()
             password = self.password_entry.get()
             
-            print(f"Attempting to login with Username: {username} and Password: {password}")
+            print(f"Attempting to login with Username: {username} 
+                  and Password: {password}")
             
             if username == "admin" and password == "admin123":
                 self.current_user = "admin"
                 show_admin_interface(self)
                 print("Logged in as \'Admin\'")
-            elif any(emp['username'] == username and emp['password'] == password for emp in self.karyawan_data):
+                
+            elif any(emp['username'] == username and 
+                     emp['password'] == password for emp in self.karyawan_data):
+                
                 self.current_user = username
                 show_karyawan_interface(self)
                 print("Logged in as \'Karyawan\'")

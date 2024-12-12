@@ -1,4 +1,5 @@
 from employee_data_management_menu import manage_employee_data
+from attendance_and_leave_tracking import attendance_and_leave_menu
 
 # add user as parameter
 def admin_dashboard(user):  
@@ -11,7 +12,7 @@ def admin_dashboard(user):
         print("┌───────────────────────────────────────────────────────────────┐")
         print("│  1. 📋 - Employee Data Management                             │")
         print("│  2. 🕒 - Attendance and Leave Tracking                        │")
-        print("│a  3. 📊 - Reporting and Analytics                              │")
+        print("│  3. 📊 - Reporting and Analytics                              │")
         print("│  4. ❌ - Logout                                               │")
         print("└───────────────────────────────────────────────────────────────┘")
         
@@ -21,7 +22,7 @@ def admin_dashboard(user):
             manage_employee_data()
         elif choice == '2':
             print("\n--- 🕒 Attendance and Leave Tracking ---")
-            print("This feature is under development. (Placeholder)")
+            attendance_and_leave_menu()
         elif choice == '3':
             print("\n--- 📊 Reporting and Analytics ---")
             print("This feature is under development. (Placeholder)")
