@@ -6,20 +6,20 @@ def add_employee(self):
     username = self.username_entry.get()
     password = self.password_entry.get()
 
-    if not all([name, username, password ]):
-        messagebox.showerror("Error", "Semua input harus diisi!")
-        return
+    # if not all([name, username, password ]):
+    #     messagebox.showerror("Error", "Semua input harus diisi!")
+    #     return
 
-    new_employee = {
-        'name': name,
-        'username': username,
-        'password': password
-    }
+    # new_employee = {
+    #     'name': name,
+    #     'username': username,
+    #     'password': password
+    # }
 
-    self.karyawan_data.append(new_employee)
+    # self.karyawan_data.append(new_employee)
     # save_data(self.karyawan_data, self.attendance_records)
 
-    self.update_employee_list()
+    # self.update_employee_list()
 
 def update_employee_list(self):
     self.employee_listbox.delete(0, tk.END)
