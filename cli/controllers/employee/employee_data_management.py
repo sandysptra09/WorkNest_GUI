@@ -115,6 +115,8 @@ def update_employee(employee_id, name=None, gender=None, birth_place=None, birth
         with connection.cursor() as cursor:
             updates = []
             values = []
+            
+            # Collect fields to update
             if name:
                 updates.append("name = %s")
                 values.append(name)
@@ -140,35 +142,70 @@ def update_employee(employee_id, name=None, gender=None, birth_place=None, birth
                 updates.append("address = %s")
                 values.append(address)
 
+            # handle no updates case
+            if not updates:
+                print("No updates provided. Nothing to update.")
+                return
+
             values.append(employee_id)
             query = f"UPDATE employees SET {', '.join(updates)} WHERE id = %s"
             cursor.execute(query, values)
             connection.commit()
-            print(f"\n{'='*60}")
-            print(f"✏️  Updated Employee Data for ID: {employee_id}")
-            print(f"{'='*60}")
+
+            # Feedback on result
+            if cursor.rowcount > 0:
+                print(f"\n{'='*60}")
+                print(f"✏️  Updated Employee Data for ID: {employee_id}")
+                print(f"{'='*60}")
+            else:
+                print("No data was updated. Please check the input values.")
     except Exception as e:
+        connection.rollback()
         print(f"\nError: {e}")
     finally:
         connection.close()
 
+
 # function to delete employee with confirmation
 def delete_employee(employee_id):
-    confirmation = input("Are you sure you want to delete this employee? (yes/no): ").strip().lower()
-    if confirmation != 'yes':
-        print("Deletion canceled.")
+    if not employee_id or not isinstance(employee_id, int):
+        print("Invalid employee ID.")
         return
 
     try:
         connection = create_connection()
         with connection.cursor() as cursor:
+            # check if employee exists
+            cursor.execute("SELECT name, nip FROM employees WHERE id = %s", (employee_id,))
+            employee = cursor.fetchone()
+            if not employee:
+                print(f"No employee found with ID: {employee_id}")
+                return
+
+            # display employee info for confirmation
+            print(f"Employee to be deleted:")
+            print(f"Name: {employee[0]}, NIP: {employee[1]}")
+
+            # ask for confirmation
+            confirmation = input("Are you sure you want to delete this employee? (yes/no): ").strip().lower()
+            if confirmation != 'yes':
+                print("Deletion canceled.")
+                return
+
+            # delete the employee
             query = "DELETE FROM employees WHERE id = %s"
             cursor.execute(query, (employee_id,))
             connection.commit()
-            print(f"\n{'='*60}")
-            print(f"🗑️  Deleted Employee with ID: {employee_id}")
-            print(f"{'='*60}")
+
+            # feedback on deletion
+            if cursor.rowcount > 0:
+                print(f"\n{'='*60}")
+                print(f"🗑️  Deleted Employee: {employee[0]} (ID: {employee_id})")
+                print(f"{'='*60}")
+            else:
+                print(f"No data was deleted. Employee ID {employee_id} may not exist.")
     except Exception as e:
+        connection.rollback()
         print(f"\nError: {e}")
     finally:
         connection.close()
