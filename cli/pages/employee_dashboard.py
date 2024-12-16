@@ -1,3 +1,5 @@
+from employee_self_service_menu import manage_employee_self_service
+
 # add user as parameter
 def employee_dashboard(user):
     while True:
@@ -7,14 +9,14 @@ def employee_dashboard(user):
         
         print("\n")
         print("┌───────────────────────────────────────────────────────────────┐")
-        print("│  1. 🛠️ - Employee Self-Service                                │")
+        print("│  1. 🛠️  - Employee Self-Service                                │")
         print("│  2. ❌ - Logout                                               │")
         print("└───────────────────────────────────────────────────────────────┘")
         
         choice = input("\nPlease select a feature (1-2): ").strip()
         if choice == '1':
             print("\n--- 🛠️ Employee Self-Service ---")
-            print("This feature is under development. (Placeholder)")
+            manage_employee_self_service(user)
         elif choice == '2':
             print("\nLogging out...")
             break
