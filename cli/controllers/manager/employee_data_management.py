@@ -37,8 +37,6 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
     finally:
         connection.close()
 
-
-
 # function to view employee details by ID
 def view_employee(employee_id):
     try:
@@ -50,16 +48,16 @@ def view_employee(employee_id):
             if employee:
                 print(f"\n{'='*60}")
                 print(f"📋  Employee Details (ID: {employee[0]})")
-                print(f"  NIP: {employee[1]}")
-                print(f"  NIK: {employee[2]}")
-                print(f"  Name: {employee[3]}")
-                print(f"  Gender: {employee[4]}")
-                print(f"  Birth Place: {employee[5]}")
-                print(f"  Birth Date: {employee[6]}")
-                print(f"  Phone: {employee[7]}")
-                print(f"  Religion: {employee[8]}")
+                print(f"  NIP           : {employee[1]}")
+                print(f"  NIK           : {employee[2]}")
+                print(f"  Name          : {employee[3]}")
+                print(f"  Gender        : {employee[4]}")
+                print(f"  Birth Place   : {employee[5]}")
+                print(f"  Birth Date    : {employee[6]}")
+                print(f"  Phone         : {employee[7]}")
+                print(f"  Religion      : {employee[8]}")
                 print(f"  Marital Status: {employee[9]}")
-                print(f"  Address: {employee[10]}")
+                print(f"  Address       : {employee[10]}")
                 print(f"{'='*60}")
             else:
                 print("\nEmployee not found.")
@@ -81,20 +79,22 @@ def view_all_employees():
                 print("\n" + "=" * 60)
                 print("📋  All Employees")
                 print("=" * 60)
+                
                 for employee in employees:
                     print(f"\n{'=' * 60}")
-                    print(f"ID: {employee[0]}")
-                    print(f"NIP: {employee[1]}")
-                    print(f"NIK: {employee[2]}")
-                    print(f"Name: {employee[3]}")
-                    print(f"Gender: {employee[4]}")
-                    print(f"Birth Place: {employee[5]}")
-                    print(f"Birth Date: {employee[6]}")
-                    print(f"Phone: {employee[7]}")
-                    print(f"Religion: {employee[8]}")
+                    print(f"ID            : {employee[0]}")
+                    print(f"NIP           : {employee[1]}")
+                    print(f"NIK           : {employee[2]}")
+                    print(f"Name          : {employee[3]}")
+                    print(f"Gender        : {employee[4]}")
+                    print(f"Birth Place   : {employee[5]}")
+                    print(f"Birth Date    : {employee[6]}")
+                    print(f"Phone         : {employee[7]}")
+                    print(f"Religion      : {employee[8]}")
                     print(f"Marital Status: {employee[9]}")
-                    print(f"Address: {employee[10]}")
+                    print(f"Address       : {employee[10]}")
                     print(f"{'=' * 60}")
+
                 print("\n" + "=" * 60)
             else:
                 print("\nNo employees found.")
@@ -102,6 +102,7 @@ def view_all_employees():
         print(f"\nError: {e}")
     finally:
         connection.close()
+
 
 # function to update employee details with confirmation
 def update_employee(employee_id, name=None, gender=None, birth_place=None, birth_date=None, phone=None, religion=None, marital_status=None, address=None):
