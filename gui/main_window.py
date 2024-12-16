@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 from gui.pages.admin_dashboard import show_admin_interface
 from gui.pages.employee_dashboard import show_karyawan_interface
+from gui.controllers.employee_data_management import add_employee
+from gui.widgets.employee_widgets import go_back_to_admin1
 # from employee_management.controllers.dataManajemen import load_data, save_data
 
 class EmployeeManagementApp:
@@ -56,7 +58,8 @@ class EmployeeManagementApp:
                 messagebox.showerror("Error", "Username atau password salah.")
 
     def manage_employees(self):
-        self.admin_frame.destroy()
+        if self.admin_frame is not None:
+            self.admin_frame.destroy()
         self.manage_frame = tk.Frame(self.root)
         self.manage_frame.pack(pady=50)
         self.manage_frame.configure(bg='#ffffff')
@@ -86,7 +89,7 @@ class EmployeeManagementApp:
         add_button = tk.Button(
         self.manage_frame, 
         text="Tambah Karyawan", 
-        command=self.add_employee, 
+        command=add_employee(self), 
         foreground='#ffffff', 
         bg='#2596be', 
         font=("Poppins", 10, "bold"), 
@@ -108,18 +111,18 @@ class EmployeeManagementApp:
         )
         self.employee_listbox.grid(row=5, column=0, columnspan=2, pady=(10, 10), padx=(5, 5))
 
-        back_button = tk.Button(
-        self.manage_frame, 
-        text="Kembali", 
-        command=self.go_back_to_admin1, 
-        foreground='#ffffff', 
-        bg='#b90000', 
-        font=("Poppins", 10, "bold"), 
-        relief="flat", 
-        width=20,
-        pady=5
-        )
-        back_button.grid(row=6, column=0, columnspan=2, pady=(10, 0))
+        # back_button = tk.Button(
+        # self.manage_frame, 
+        # text="Kembali", 
+        # command=go_back_to_admin1(self), 
+        # foreground='#ffffff', 
+        # bg='#b90000', 
+        # font=("Poppins", 10, "bold"),         # BACK BUTTON
+        # relief="flat", 
+        # width=20,
+        # pady=5
+        # )
+        # back_button.grid(row=6, column=0, columnspan=2, pady=(10, 0))
             
         self.update_employee_list()
 
