@@ -1,8 +1,9 @@
 from controllers.employee.employee_self_sevice import (
     view_profile,
     view_attendance,
-    submit_leave_request,
-    track_performance
+    record_attendance,
+    # submit_leave_request,
+    # track_performance
 )
 
 def manage_employee_self_service(user):
@@ -16,7 +17,7 @@ def manage_employee_self_service(user):
         print("┌───────────────────────────────────────────────────────────────┐")
         print("│  1. 📄   - View Profile                                       │")
         print("│  2. 🗓️    - View Attendance Records                            │")
-        print("│  3. ✉️    - Submit Leave Request                               │")
+        print("│  3. ✉️    - Record Attendance                               │")
         print("│  4. 📊   - Track Performance                                  │")
         print("│  5. 🔙   - Back to Dashboard                                  │")
         print("└───────────────────────────────────────────────────────────────┘")
@@ -29,11 +30,11 @@ def manage_employee_self_service(user):
         elif choice == '2':
             view_attendance(user)
         elif choice == '3':
-            submit_leave_request(user)
+            record_attendance(user)
         elif choice == '4':
-            track_performance(user)
+            record_attendance(user)
         elif choice == '5':
-            break  # Kembali ke Dashboard
+            break  
         else:
             
             print("\n⚠️ Invalid choice. Please select a valid option (1-5).")

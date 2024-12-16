@@ -21,3 +21,4 @@
 2024-12-16 15:04:41,353:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
 2024-12-16 15:12:21,949:ERROR:Error fetching leave requests: unsupported format string passed to NoneType.__format__
 2024-12-16 15:23:45,225:INFO:Recorded attendance for Employee ID 7 on 2024-12-28.
+2024-12-16 18:36:26,376:INFO:Recorded attendance for Employee ID 13 on 2024-12-12.
