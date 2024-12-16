@@ -1,0 +1,23 @@
+2024-12-12 16:59:07,281:ERROR:Error fetching attendance records: 1146 (42S02): Table 'worknest.attendance' doesn't exist
+2024-12-12 17:01:40,799:ERROR:Error recording attendance: 1146 (42S02): Table 'worknest.attendance' doesn't exist
+2024-12-12 17:08:46,912:ERROR:Error fetching attendance records: 1054 (42S22): Unknown column 'a.id' in 'field list'
+2024-12-12 17:09:11,462:INFO:Recorded attendance for Employee ID 12 on 2024-12-12.
+2024-12-12 17:10:31,342:ERROR:Error fetching attendance records: 1054 (42S22): Unknown column 'a.id' in 'field list'
+2024-12-12 17:11:19,438:ERROR:Error fetching attendance records: 1054 (42S22): Unknown column 'a.id' in 'field list'
+2024-12-12 17:11:41,589:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-12 17:16:04,930:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-12 17:16:24,587:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-12 17:18:52,481:INFO:Leave request submitted for Employee ID 9: Sick from 2024-12-24 to 2024-12-26.
+2024-12-12 17:18:57,117:ERROR:Error fetching leave requests: 1146 (42S02): Table 'worknest.lr' doesn't exist
+2024-12-12 17:25:49,674:ERROR:Error fetching leave requests: 1146 (42S02): Table 'worknest.lr' doesn't exist
+2024-12-12 17:26:24,075:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-12 17:28:23,656:ERROR:Error fetching leave requests: 1054 (42S22): Unknown column 'lr.status' in 'field list'
+2024-12-12 17:29:29,281:ERROR:Error fetching leave requests: unsupported format string passed to NoneType.__format__
+2024-12-12 17:32:16,522:ERROR:Error fetching leave requests: unsupported format string passed to NoneType.__format__
+2024-12-12 17:33:04,151:ERROR:Error fetching leave requests: unsupported format string passed to NoneType.__format__
+2024-12-16 14:58:47,103:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-16 15:01:29,039:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-16 15:02:10,448:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-16 15:04:41,353:ERROR:Error fetching attendance records: unsupported format string passed to datetime.timedelta.__format__
+2024-12-16 15:12:21,949:ERROR:Error fetching leave requests: unsupported format string passed to NoneType.__format__
+2024-12-16 15:23:45,225:INFO:Recorded attendance for Employee ID 7 on 2024-12-28.

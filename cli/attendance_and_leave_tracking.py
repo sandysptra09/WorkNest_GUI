@@ -1,8 +1,10 @@
-from controllers.employee.track_attendance_and_leave import (
+# attendance_and_leave_tracking.py
+
+from controllers.manager.track_attendance_and_leave import (
     view_attendance,
     record_attendance,
-    # request_leave,
-    # view_leave_requests
+    request_leave,
+    view_leave_requests
 )
 
 def attendance_and_leave_menu():

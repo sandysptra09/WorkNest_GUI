@@ -1,4 +1,4 @@
-from controllers.employee.employee_data_management import (
+from controllers.manager.employee_data_management import (
     add_employee,
     view_employee,
     view_all_employees,
