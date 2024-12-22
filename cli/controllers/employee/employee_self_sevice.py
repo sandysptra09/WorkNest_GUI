@@ -117,7 +117,6 @@ def record_attendance(user):
         connection = create_connection()
         cursor = connection.cursor()
 
-        # Insert attendance record
         query = """
         INSERT INTO attendances (employee_id, attendance_date, check_in, check_out)
         VALUES (%s, %s, %s, %s);
@@ -136,3 +135,98 @@ def record_attendance(user):
         if connection.is_connected():
             cursor.close()
             connection.close()
+            
+def submit_leave_request(user):
+    print("\n--- 🖒 Request Leave ---")
+
+    # Employee ID langsung diambil dari user yang login
+    employee_id = user['id']
+    print(f"Submitting leave request for Employee ID: {employee_id} ({user['name']})")
+
+    leave_type = input("Enter Leave Type (e.g., Sick, Vacation): ").strip()
+    if not leave_type:
+        print("\u26a0️ Leave Type cannot be empty.")
+        return
+
+    start_date_input = input("Enter Start Date (YYYY-MM-DD): ").strip()
+    try:
+        start_date = datetime.strptime(start_date_input, "%Y-%m-%d").date()
+    except ValueError:
+        print("\u26a0️ Invalid date format. Please use YYYY-MM-DD.")
+        return
+
+    end_date_input = input("Enter End Date (YYYY-MM-DD): ").strip()
+    try:
+        end_date = datetime.strptime(end_date_input, "%Y-%m-%d").date()
+    except ValueError:
+        print("\u26a0️ Invalid date format. Please use YYYY-MM-DD.")
+        return
+
+    if end_date < start_date:
+        print("\u26a0️ End Date cannot be earlier than Start Date.")
+        return
+
+    reason = input("Enter Leave Reason: ").strip()
+    if not reason:
+        print("\u26a0️ Leave Reason cannot be empty.")
+        return
+
+    try:
+        connection = create_connection()
+        cursor = connection.cursor()
+
+        # Insert leave request into database
+        query = """
+        INSERT INTO leave_request (employee_id, leave_type, start_date, end_date, reason)
+        VALUES (%s, %s, %s, %s, %s);
+        """
+        cursor.execute(query, (employee_id, leave_type, start_date, end_date, reason))
+        connection.commit()
+
+        print(f"\n✅ Leave request submitted successfully for {user['name']} from {start_date} to {end_date}!")
+        logging.info(f"Leave request submitted for Employee ID {employee_id}: {leave_type} from {start_date} to {end_date}.")
+
+    except Exception as e:
+        logging.error(f"Error submitting leave request: {e}")
+        print(f"\n\u26a0️ Error submitting leave request: {e}")
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+            
+
+def view_leave_status(user):
+    print("\n--- 📋 View Leave Status ---")
+
+    employee_id = user['id']
+    try:
+        connection = create_connection()
+        cursor = connection.cursor()
+
+        query = """
+        SELECT leave_type, start_date, end_date, reason, status
+        FROM leave_requests
+        WHERE employee_id = %s
+        ORDER BY start_date DESC;
+        """
+        cursor.execute(query, (employee_id,))
+        leave_requests = cursor.fetchall()
+
+        if leave_requests:
+            print(f"\nLeave Requests for {user['name']}:\n")
+            for leave in leave_requests:
+                leave_type, start_date, end_date, reason, status = leave
+                print(f"Type: {leave_type}, Start: {start_date}, End: {end_date}, Reason: {reason}, Status: {status}")
+        else:
+            print("\u26a0️ No leave requests found.")
+
+    except Exception as e:
+        logging.error(f"Error retrieving leave requests: {e}")
+        print(f"\n\u26a0️ Error retrieving leave requests: {e}")
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
