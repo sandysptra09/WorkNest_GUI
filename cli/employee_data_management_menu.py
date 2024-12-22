@@ -56,7 +56,12 @@ def manage_employee_data():
 
         elif choice == '4':
             # update employee
-            employee_id = input("Enter employee ID: ")
+            try:
+                employee_id = int(input("Enter employee ID: "))
+            except ValueError:
+                print("Invalid ID. Please enter a numeric value.")
+                continue
+            
             name = input("Enter new name (leave blank to keep current): ")
             gender = input("Enter new gender (leave blank to keep current): ")
             birth_place = input("Enter new birth place (leave blank to keep current): ")
@@ -66,7 +71,20 @@ def manage_employee_data():
             marital_status = input("Enter new marital status (leave blank to keep current): ")
             address = input("Enter new address (leave blank to keep current): ")
 
-            update_employee(employee_id, name, gender, birth_place, birth_date, phone, religion, marital_status, address)
+            # Pass the updates as keyword arguments
+            update_employee(
+                employee_id=employee_id,
+                name=name,
+                gender=gender,
+                birth_place=birth_place,
+                birth_date=birth_date,
+                phone=phone,
+                religion=religion,
+                marital_status=marital_status,
+                address=address
+            )
+            print(f"✔️  Employee ID {employee_id} has been successfully updated.")
+
 
         elif choice == '5':
             # delete Employee

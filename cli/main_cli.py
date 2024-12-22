@@ -27,7 +27,7 @@ def main():
         elif role == 'employee':
             employee_dashboard(user)  
         else:
-            print("\n❌ Role tidak dikenali. Mohon cek kembali data pengguna.")
+            print("\n❌ Role not found. Please check the user data again.")
     
     # if login failed
     else:

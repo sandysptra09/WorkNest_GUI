@@ -26,3 +26,11 @@ def read_json_db():
             'leave_requests': [],
             'notifications': [],
         }
+        
+def save_data(data):
+    try:
+        with open(DB_JSON, 'w') as file:
+            json.dump(data, file, indent=4)
+        # print("Data berhasil disimpan ke worknest.json")
+    except Exception as e:
+        print(f"Terjadi kesalahan saat menyimpan data ke file JSON: {e}")
