@@ -1,7 +1,7 @@
 import os
 import json
 
-DB_JSON = '../configs/worknest.json'
+DB_JSON = 'configs/worknest.json'
 
 def read_json_db():
     if not os.path.exists(DB_JSON):

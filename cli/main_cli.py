@@ -19,10 +19,15 @@ def main():
         print("│ ✨  Role: {:<52}│".format(user['role'].capitalize()))
         print("└" + "─" * 63 + "┘")
         
-        if user['role'] == 'admin':  
+        # Pastikan role diperbandingkan dalam format yang sama
+        role = user['role'].lower()  
+        
+        if role == 'admin':  
             admin_dashboard(user)  
-        else:
+        elif role == 'employee':
             employee_dashboard(user)  
+        else:
+            print("\n❌ Role tidak dikenali. Mohon cek kembali data pengguna.")
     
     # if login failed
     else:
