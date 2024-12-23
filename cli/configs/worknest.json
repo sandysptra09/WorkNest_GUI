@@ -59,6 +59,13 @@
             "attendance_date": "2024-12-12",
             "check_in": "07:00:00",
             "check_out": "17:00:00"
+        },
+        {
+            "attendance_id": 2,
+            "employee_id": 1,
+            "attendance_date": "2024-12-23",
+            "check_in": "07:30",
+            "check_out": "16:30"
         }
     ],
     "leave_requests": [
@@ -69,7 +76,8 @@
             "start_date": "2024-12-20",
             "end_date": "2024-12-22",
             "reason": "Check Health",
-            "applied_on": "2024-12-23"
+            "applied_on": "2024-12-23",
+            "status": "Approved"
         }
     ],
     "notifications": []
