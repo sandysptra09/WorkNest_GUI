@@ -1,9 +1,6 @@
 import json
 from utils.utils import read_json_db, save_data
 
-import bcrypt
-from configs.db_connection import create_connection
-
 # function to add employee
 def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address, email, password):
     

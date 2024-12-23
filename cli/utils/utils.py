@@ -5,7 +5,7 @@ DB_JSON = 'configs/worknest.json'
 
 def read_json_db():
     if not os.path.exists(DB_JSON):
-        print("File worknest.json tidak ditemukan!")
+        print("Worknest.json file not found!")
         return {
             'employees': [],
             'admins': [],
@@ -18,7 +18,7 @@ def read_json_db():
         with open(DB_JSON, 'r') as file:
             return json.load(file)
     except Exception as e:
-        print(f"Terjadi kesalahan saat membaca file JSON: {e}")
+        print(f"An error occurred while reading the JSON file: {e}")
         return {
             'employees': [],
             'admins': [],

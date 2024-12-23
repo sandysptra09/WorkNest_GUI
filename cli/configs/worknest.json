@@ -52,7 +52,25 @@
             "role": "Admin"
         }
     ],
-    "attendances": [],
-    "leave_requests": [],
+    "attendances": [
+        {
+            "attendance_id": 1,
+            "employee_id": 2,
+            "attendance_date": "2024-12-12",
+            "check_in": "07:00:00",
+            "check_out": "17:00:00"
+        }
+    ],
+    "leave_requests": [
+        {
+            "leave_request_id": 1,
+            "employee_id": 1,
+            "leave_type": "Sick",
+            "start_date": "2024-12-20",
+            "end_date": "2024-12-22",
+            "reason": "Check Health",
+            "applied_on": "2024-12-23"
+        }
+    ],
     "notifications": []
 }
