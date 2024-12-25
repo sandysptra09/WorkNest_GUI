@@ -2,7 +2,7 @@ from controllers.employee.employee_self_sevice import (
     view_profile,
     view_attendance,
     record_attendance,
-    submit_leave_request,
+    request_leave,
     view_leave_status
     # track_performance
 )
@@ -34,7 +34,7 @@ def manage_employee_self_service(user):
         elif choice == '3':
             record_attendance(user)
         elif choice == '4':
-            submit_leave_request(user)
+            request_leave(user)
         elif choice == '5':
             view_leave_status(user)
         elif choice == '6':
