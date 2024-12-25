@@ -33,9 +33,9 @@ def main():
     else:
         print("\n" + "┌" + "─" * 63 + "┐")
         print("│ ❌  Login Failed. Exiting Program.                             │")
-        print("├" + "─" * 63 + "┤")
-        print("│ 💡  Tip: Ensure your email and password are correct.           │")
-        print("│ 🔁  If you forgot your password, contact your admin.           │")
+        print("├" + "─" * 61 + "┤")
+        print("│ 💡  Tip: Ensure your email and password are correct.          │")
+        print("│ 🔁  If you forgot your password, contact your admin.          │")
         print("└" + "─" * 63 + "┘")
 
 if __name__ == "__main__":

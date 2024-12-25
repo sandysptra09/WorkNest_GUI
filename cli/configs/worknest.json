@@ -32,6 +32,102 @@
             "email": "radenemployee@gmail.nest",
             "password": "raden1",
             "role": "Employee"
+        },
+        {
+            "id": 3,
+            "nip": "121213",
+            "nik": "1234567890123456",
+            "name": "Ilyas Putra",
+            "gender": "Male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-12-07",
+            "phone": "1234567",
+            "religion": "Islamic",
+            "marital_status": "Single",
+            "address": "Sukabumi",
+            "email": "ilyasemployee@gmail.nest",
+            "password": "ilyas123",
+            "role": "Employee"
+        },
+        {
+            "id": 3,
+            "nip": "121213",
+            "nik": "1234567890123456",
+            "name": "Ilyas Putra",
+            "gender": "Male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-12-07",
+            "phone": "1234567",
+            "religion": "Islamic",
+            "marital_status": "Single",
+            "address": "Sukabumi",
+            "email": "ilyasemployee@gmail.nest",
+            "password": "ilyas123",
+            "role": "Employee"
+        },
+        {
+            "id": 4,
+            "nip": "121214",
+            "nik": "098765432112346",
+            "name": "Raden",
+            "gender": "Male",
+            "birth_place": "Banjaran",
+            "birth_date": "2005-09-12",
+            "phone": "12345678121",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Alun-alun Banjaran",
+            "email": "radensemployee@gmail.nest",
+            "password": "radens123",
+            "role": "Employee"
+        },
+        {
+            "id": 4,
+            "nip": "121214",
+            "nik": "098765432112346",
+            "name": "Raden",
+            "gender": "Male",
+            "birth_place": "Banjaran",
+            "birth_date": "2005-09-12",
+            "phone": "12345678121",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Alun-alun Banjaran",
+            "email": "radensemployee@gmail.nest",
+            "password": "radens123",
+            "role": "Employee"
+        },
+        {
+            "id": 5,
+            "nip": "121215",
+            "nik": "4567890123456789",
+            "name": "Raihan Fauzi",
+            "gender": "Male",
+            "birth_place": "Cimahi",
+            "birth_date": "2005-01-12",
+            "phone": "1234567567",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Cimahi",
+            "email": "raihanfauzi@employee.nest",
+            "password": "raihan123",
+            "role": "Employee"
+        },
+        {
+            "id": 5,
+            "nip": "121215",
+            "nik": "4567890123456789",
+            "name": "Raihan Fauzi",
+            "gender": "Male",
+            "birth_place": "Cimahi",
+            "birth_date": "2005-01-12",
+            "phone": "1234567567",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Cimahi",
+            "email": "raihanfauzi@employee.nest",
+            "password": "raihan123",
+            "role": "Employee"
         }
     ],
     "admins": [
@@ -74,6 +170,13 @@
             "attendance_date": "2024-12-09",
             "check_in": "07:45:00",
             "check_out": "18:30:00"
+        },
+        {
+            "attendance_id": 4,
+            "employee_id": 5,
+            "attendance_date": "2024-12-27",
+            "check_in": "07:45:00",
+            "check_out": "19:30:00"
         }
     ],
     "leave_requests": [
@@ -96,6 +199,16 @@
             "reason": "Can going to hospital",
             "applied_on": "2024-12-23T22:34:40.083137",
             "status": "Approved"
+        },
+        {
+            "leave_request_id": 3,
+            "employee_id": 5,
+            "leave_type": "Vacation",
+            "start_date": "2024-12-31",
+            "end_date": "2025-01-02",
+            "reason": "Holiday for new year",
+            "applied_on": "2024-12-25T15:17:53.572154",
+            "status": "Rejected"
         }
     ],
     "notifications": []

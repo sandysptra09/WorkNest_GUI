@@ -8,6 +8,32 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
     data = read_json_db()
     employees = data.get("employees", [])
     
+    # validate NIP and NIK uniqueness
+    if any(emp['nip'] == nip for emp in employees):
+        print(f"❌ NIP '{nip}' already exists. Please use a unique NIP.")
+        return
+    if any(emp['nik'] == nik for emp in employees):
+        print(f"❌ NIK '{nik}' already exists. Please use a unique NIK.")
+        return
+    
+    # validate mandatory fields
+    if not nip or not nik or not name or not gender or not birth_date or not email or not password:
+        print("❌ Please fill in all required fields (NIP, NIK, Name, Gender, Birth Date, Email, Password).")
+        return
+    
+    # Validate gender
+    if gender.lower() not in ["male", "female"]:
+        print("❌ Invalid gender. Please enter 'Male' or 'Female'.")
+        return
+
+    # Validate date format
+    try:
+        from datetime import datetime
+        datetime.strptime(birth_date, "%Y-%m-%d")
+    except ValueError:
+        print("❌ Invalid date format. Please use 'YYYY-MM-DD'.")
+        return
+    
     # calculate new ID (auto-increment)
     new_id = employees[-1]["id"] + 1 if employees else 1
 
@@ -25,7 +51,8 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
         "marital_status": marital_status,
         "address": address,
         "email": email,
-        "password": password
+        "password": password,
+        'role': 'Employee'
     }
 
     # append the new employee to the employees list
