@@ -11,12 +11,15 @@ def format_date(date_str):
 
 # function to format time
 def format_time(time_str):
+    if not time_str or time_str == "N/A":
+        return "N/A"
     try:
         return datetime.strptime(time_str, "%H:%M").strftime("%I:%M %p")
     except ValueError:
         return time_str
 
-# 
+
+# view profile
 def view_profile(user):
     print("\n--- 📝 View Profile ---")
     for key, value in user.items():
@@ -51,34 +54,44 @@ def record_attendance(user):
         print("⚠️ Unable to determine the employee ID.")
         return
 
-    attendance_date_input = input("Enter Attendance Date (YYYY-MM-DD) [Leave blank for today]: ").strip()
-    if attendance_date_input:
+    while True:
+        attendance_date_input = input("Enter Attendance Date (YYYY-MM-DD) [Leave blank for today]: ").strip()
+        if not attendance_date_input:
+            print("⚠️ Attendance date cannot be empty. Please provide a valid date or leave blank for today.")
+            continue
         try:
             attendance_date = datetime.strptime(attendance_date_input, "%Y-%m-%d").date().isoformat()
+            break
         except ValueError:
             print("⚠️ Invalid date format. Please use YYYY-MM-DD.")
-            return
-    else:
-        attendance_date = datetime.today().date().isoformat()
 
-    check_in_input = input("Enter Check-in Time (HH:MM) [Leave blank for current time]: ").strip()
-    if check_in_input:
+    while True:
+        check_in_input = input("Enter Check-in Time (HH:MM) [Leave blank for current time]: ").strip()
+        if not check_in_input:
+            print("⚠️ Check-in time cannot be empty. Please provide a valid time or leave blank for current time.")
+            continue
         try:
-            check_in = datetime.strptime(check_in_input, "%H:%M").time().isoformat()
+            check_in_time = datetime.strptime(check_in_input, "%H:%M").time()  # Objek time untuk validasi
+            check_in = check_in_time.isoformat()  # Format ISO untuk penyimpanan
+            break
         except ValueError:
             print("⚠️ Invalid time format. Please use HH:MM.")
-            return
-    else:
-        check_in = datetime.now().time().replace(second=0, microsecond=0).isoformat()
 
-    check_out_input = input("Enter Check-out Time (HH:MM) [Leave blank if not yet checked out]: ").strip()
     check_out = None
-    if check_out_input:
-        try:
-            check_out = datetime.strptime(check_out_input, "%H:%M").time().isoformat()
-        except ValueError:
-            print("⚠️ Invalid time format. Please use HH:MM.")
-            return
+    while True:
+        check_out_input = input("Enter Check-out Time (HH:MM) [Leave blank if not yet checked out]: ").strip()
+        if check_out_input:
+            try:
+                check_out_time = datetime.strptime(check_out_input, "%H:%M").time()  # Objek time untuk validasi
+                if check_out_time < check_in_time:
+                    print("⚠️ Check-out time cannot be earlier than check-in time.")
+                else:
+                    check_out = check_out_time.isoformat()  # Format ISO untuk penyimpanan
+                    break
+            except ValueError:
+                print("⚠️ Invalid time format. Please use HH:MM.")
+        else:
+            break
 
     data = read_json_db()
     employees = data.get("employees", [])
@@ -89,7 +102,7 @@ def record_attendance(user):
         print(f"⚠️ No employee found with ID: {employee_id}")
         return
 
-    # Check for duplicate attendance record
+    # check for duplicate attendance record
     for att in attendances:
         if att["employee_id"] == employee_id and att["attendance_date"] == attendance_date:
             print(f"⚠️ Attendance for {attendance_date} already exists for this employee.")
@@ -107,7 +120,15 @@ def record_attendance(user):
     data["attendances"] = attendances
 
     save_data(data)
-    print(f"\n✅ Attendance recorded successfully for {employee['name']} on {attendance_date}!")
+
+    # output
+    print(f"\n✅ Attendance recorded successfully for {employee['name']} on {format_date(attendance_date)}!")
+    print(f"   Check-in: {format_time(check_in)}")
+    if check_out:
+        print(f"   Check-out: {format_time(check_out)}")
+    else:
+        print("   Check-out: Not yet checked out.")
+
 
 # function to request leave
 def request_leave(user):
@@ -119,33 +140,39 @@ def request_leave(user):
         print("⚠️ Unable to determine the employee ID.")
         return
 
-    leave_type = input("Enter Leave Type (e.g., Sick, Vacation): ").strip()
-    if not leave_type:
-        print("⚠️ Leave Type cannot be empty.")
-        return
+    while True:
+        leave_type = input("Enter Leave Type (e.g., Sick, Vacation): ").strip()
+        if leave_type:
+            break
+        print("⚠️ Leave Type cannot be empty. Please enter a valid leave type.")
 
-    start_date_input = input("Enter Start Date (YYYY-MM-DD): ").strip()
-    try:
-        start_date = datetime.strptime(start_date_input, "%Y-%m-%d").date().isoformat()
-    except ValueError:
-        print("⚠️ Invalid Start Date format. Please use YYYY-MM-DD.")
-        return
+    while True:
+        start_date_input = input("Enter Start Date (YYYY-MM-DD): ").strip()
+        if not start_date_input:
+            print("⚠️ Start Date cannot be empty. Please enter a valid date.")
+            continue
+        try:
+            start_date = datetime.strptime(start_date_input, "%Y-%m-%d").date().isoformat()
+            break
+        except ValueError:
+            print("⚠️ Invalid Start Date format. Please use YYYY-MM-DD.")
 
-    end_date_input = input("Enter End Date (YYYY-MM-DD): ").strip()
-    try:
-        end_date = datetime.strptime(end_date_input, "%Y-%m-%d").date().isoformat()
-    except ValueError:
-        print("⚠️ Invalid End Date format. Please use YYYY-MM-DD.")
-        return
 
-    if end_date < start_date:
-        print("⚠️ End Date cannot be earlier than Start Date.")
-        return
+    while True:
+        end_date_input = input("Enter End Date (YYYY-MM-DD): ").strip()
+        try:
+            end_date = datetime.strptime(end_date_input, "%Y-%m-%d").date().isoformat()
+            if end_date >= start_date:
+                break
+            print("⚠️ End Date cannot be earlier than Start Date.")
+        except ValueError:
+            print("⚠️ Invalid End Date format. Please use YYYY-MM-DD.")
 
-    reason = input("Enter Leave Reason: ").strip()
-    if not reason:
-        print("⚠️ Leave Reason cannot be empty.")
-        return
+    while True:
+        reason = input("Enter Leave Reason: ").strip()
+        if reason:
+            break
+        print("⚠️ Leave Reason cannot be empty. Please enter a valid reason.")
 
     data = read_json_db()
     employees = data.get("employees", [])
@@ -176,18 +203,24 @@ def request_leave(user):
 
 # function to view leave requests
 def view_leave_status(user):
-    print("\n--- 📂 View Leave Status ---")
+    print("\n=== 📂 View Leave Status ===")
     data = read_json_db()
-    leave_requests = data['leave_requests']
+    leave_requests = data.get('leave_requests', [])
     user_requests = [req for req in leave_requests if req['employee_id'] == user['id']]
 
     if user_requests:
-        print("\nLeave Requests:\n")
-        for req in user_requests:
+        print("\n✨ Your Leave Requests ✨")
+        print(f"{'='*50}")
+        for idx, req in enumerate(user_requests, start=1):
             formatted_start_date = format_date(req['start_date'])
             formatted_end_date = format_date(req['end_date'])
-            print(f"Type: {req['leave_type']}, Start: {formatted_start_date}, End: {formatted_end_date}, Reason: {req['reason']}, Status: {req['status']}")
+            print(f"[{idx}]")
+            print(f"📝 Type      : {req['leave_type']}")
+            print(f"📅 Dates     : {formatted_start_date} ➡ {formatted_end_date}")
+            print(f"💬 Reason    : {req['reason']}")
+            print(f"📌 Status    : {req['status']}")
+            print(f"{'-'*50}")
     else:
-        print("No leave requests found.")
+        print("\n⚠️ No leave requests found. You have not submitted any leave requests yet!")
 
 
