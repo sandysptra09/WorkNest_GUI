@@ -1,22 +1,19 @@
 import json
 from utils.utils import read_json_db, save_data
 
-import bcrypt
-from configs.db_connection import create_connection
-
 # function to add employee
 def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religion, marital_status, address, email, password):
-    
-    # load existing data from JSON
+   
+   # load existing data from JSON
     data = read_json_db()
     employees = data.get("employees", [])
-    
+
     # calculate new ID (auto-increment)
     new_id = employees[-1]["id"] + 1 if employees else 1
 
     # create new employee data
     employee = {
-        "id": new_id,  
+        "id": new_id,
         "nip": nip,
         "nik": nik,
         "name": name,
@@ -28,17 +25,16 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
         "marital_status": marital_status,
         "address": address,
         "email": email,
-        "password": password
+        "password": password,
+        'role': 'Employee'
     }
 
     # append the new employee to the employees list
     employees.append(employee)
-    data['employees'].append(employee)
-    
 
     # save the updated data back to the JSON file
     save_data(data)
-    
+
     # success message
     print(f"\n{'=' * 60}")
     print(f"🎉 Employee Successfully Added!")
@@ -53,7 +49,7 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
     print(f"🏡 Address        : {address}")
     print(f"📧 Email          : {email}")
     print(f"{'=' * 60}\n")
-
+    
 # function to view employee details by ID
 def view_employee(employee_id):
     try:

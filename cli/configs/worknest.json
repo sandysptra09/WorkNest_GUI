@@ -30,12 +30,234 @@
             "marital_status": "Single",
             "address": "Cikarang",
             "email": "radenemployee@gmail.nest",
-            "password": "raden1"
+            "password": "raden1",
+            "role": "Employee"
+        },
+        {
+            "id": 3,
+            "nip": "121213",
+            "nik": "1234567890123456",
+            "name": "Ilyas Putra",
+            "gender": "Male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-12-07",
+            "phone": "1234567",
+            "religion": "Islamic",
+            "marital_status": "Single",
+            "address": "Sukabumi",
+            "email": "ilyasemployee@gmail.nest",
+            "password": "ilyas123",
+            "role": "Employee"
+        },
+        {
+            "id": 3,
+            "nip": "121213",
+            "nik": "1234567890123456",
+            "name": "Ilyas Putra",
+            "gender": "Male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-12-07",
+            "phone": "1234567",
+            "religion": "Islamic",
+            "marital_status": "Single",
+            "address": "Sukabumi",
+            "email": "ilyasemployee@gmail.nest",
+            "password": "ilyas123",
+            "role": "Employee"
+        },
+        {
+            "id": 4,
+            "nip": "121214",
+            "nik": "098765432112346",
+            "name": "Raden",
+            "gender": "Male",
+            "birth_place": "Banjaran",
+            "birth_date": "2005-09-12",
+            "phone": "12345678121",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Alun-alun Banjaran",
+            "email": "radensemployee@gmail.nest",
+            "password": "radens123",
+            "role": "Employee"
+        },
+        {
+            "id": 4,
+            "nip": "121214",
+            "nik": "098765432112346",
+            "name": "Raden",
+            "gender": "Male",
+            "birth_place": "Banjaran",
+            "birth_date": "2005-09-12",
+            "phone": "12345678121",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Alun-alun Banjaran",
+            "email": "radensemployee@gmail.nest",
+            "password": "radens123",
+            "role": "Employee"
+        },
+        {
+            "id": 5,
+            "nip": "121215",
+            "nik": "4567890123456789",
+            "name": "Raihan Fauzi",
+            "gender": "Male",
+            "birth_place": "Cimahi",
+            "birth_date": "2005-01-12",
+            "phone": "1234567567",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Cimahi",
+            "email": "raihanfauzi@employee.nest",
+            "password": "raihan123",
+            "role": "Employee"
+        },
+        {
+            "id": 5,
+            "nip": "121215",
+            "nik": "4567890123456789",
+            "name": "Raihan Fauzi",
+            "gender": "Male",
+            "birth_place": "Cimahi",
+            "birth_date": "2005-01-12",
+            "phone": "1234567567",
+            "religion": "Islamic",
+            "marital_status": "Married",
+            "address": "Cimahi",
+            "email": "raihanfauzi@employee.nest",
+            "password": "raihan123",
+            "role": "Employee"
+        },
+        {
+            "id": 6,
+            "nip": "1234567",
+            "nik": "1234567",
+            "name": "Mizan",
+            "gender": "male",
+            "birth_place": "Cimahi",
+            "birth_date": "2001-12-12",
+            "phone": "0821193580",
+            "religion": "Muslim",
+            "marital_status": "divorced",
+            "address": "Jl. Susukan Cimahi 10",
+            "email": "mizan@upi.edu",
+            "password": "mizan123",
+            "role": "Employee"
+        },
+        {
+            "id": 6,
+            "nip": "1234567",
+            "nik": "1234567",
+            "name": "Mizan",
+            "gender": "male",
+            "birth_place": "Cimahi",
+            "birth_date": "2001-12-12",
+            "phone": "0821193580",
+            "religion": "Muslim",
+            "marital_status": "divorced",
+            "address": "Jl. Susukan Cimahi 10",
+            "email": "mizan@upi.edu",
+            "password": "mizan123",
+            "role": "Employee"
+        },
+        {
+            "id": 7,
+            "nip": "123456",
+            "nik": "123456",
+            "name": "Hilmi Gay",
+            "gender": "male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-04-12",
+            "phone": "082118928566",
+            "religion": "Muslim",
+            "marital_status": "married",
+            "address": "Jl. Cimahi Baru 20",
+            "email": "hilmi@employee.nest",
+            "password": "hilmi123",
+            "role": "Employee"
         }
     ],
-    "attendance_records": {
-        "Febriansyah Nugraha": [
-            "2024-12-22"
-        ]
-    }
+    "admins": [
+        {
+            "id": 1,
+            "nip": "987654321",
+            "nik": "3209876543210001",
+            "name": "Sandy Saputra",
+            "gender": "Male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-05-09",
+            "phone": "081141248692",
+            "religion": "Islamic",
+            "marital": "Single",
+            "status": "Active",
+            "address": "Jl. Raya No. 10, Jakarta",
+            "email": "managersandy@gmail.nest",
+            "password": "manager1",
+            "role": "Admin"
+        }
+    ],
+    "attendances": [
+        {
+            "attendance_id": 1,
+            "employee_id": 2,
+            "attendance_date": "2024-12-12",
+            "check_in": "07:00:00",
+            "check_out": "17:00:00"
+        },
+        {
+            "attendance_id": 2,
+            "employee_id": 1,
+            "attendance_date": "2024-12-23",
+            "check_in": "07:30",
+            "check_out": "16:30"
+        },
+        {
+            "attendance_id": 3,
+            "employee_id": 2,
+            "attendance_date": "2024-12-09",
+            "check_in": "07:45:00",
+            "check_out": "18:30:00"
+        },
+        {
+            "attendance_id": 4,
+            "employee_id": 5,
+            "attendance_date": "2024-12-27",
+            "check_in": "07:45:00",
+            "check_out": "19:30:00"
+        }
+    ],
+    "leave_requests": [
+        {
+            "leave_request_id": 1,
+            "employee_id": 1,
+            "leave_type": "Sick",
+            "start_date": "2024-12-20",
+            "end_date": "2024-12-22",
+            "reason": "Check Health",
+            "applied_on": "2024-12-23",
+            "status": "Approved"
+        },
+        {
+            "leave_request_id": 2,
+            "employee_id": 2,
+            "leave_type": "Sick",
+            "start_date": "2024-12-28",
+            "end_date": "2024-12-30",
+            "reason": "Can going to hospital",
+            "applied_on": "2024-12-23T22:34:40.083137",
+            "status": "Approved"
+        },
+        {
+            "leave_request_id": 3,
+            "employee_id": 5,
+            "leave_type": "Vacation",
+            "start_date": "2024-12-31",
+            "end_date": "2025-01-02",
+            "reason": "Holiday for new year",
+            "applied_on": "2024-12-25T15:17:53.572154",
+            "status": "Approved"
+        }
+    ],
+    "notifications": []
 }
