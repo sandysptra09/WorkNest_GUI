@@ -122,14 +122,10 @@ def manage_leave_requests(leave_requests):
             if decision in ["approve", "reject"]:
                 leave_request['status'] = "Approved" if decision == "approve" else "Rejected"
 
-                # Membaca data yang ada di file JSON
-                data = read_json_db()
-                
-                # Menyimpan kembali data leave_requests yang telah diperbarui
+                data = read_json_db()                
                 data['leave_requests'] = leave_requests
-                
-                # Menyimpan data ke file JSON
                 save_data(data)
+                
                 print(f"\n✅ Leave request has been {leave_request['status'].lower()}.")
             else:
                 print("⚠️ Invalid decision. Please choose 'approve' or 'reject'.")
