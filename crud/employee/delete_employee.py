@@ -1,1 +1,0 @@
-print("Ini controller delete untuk employee")
