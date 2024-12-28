@@ -50,7 +50,7 @@ def manage_employee_self_service(user):
             break  
         else:
             
-            print("\n⚠️ Invalid choice. Please select a valid option (1-6).")
+            print("\n⚠️ Invalid choice. Please select a valid option (1-7).")
 
         input("\nPress Enter to return to Employee Self-Service menu...")
 
