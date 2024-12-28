@@ -83,14 +83,30 @@
         },
         {
             "id": 6,
-            "nip": "00000001",
-            "nik": "4259482589375832",
-            "name": "Richie Nur Fauzi",
-            "gender": "female",
-            "birth_place": "Sukamena",
-            "birth_date": "2005-12-12",
-            "phone": "12345678910",
-            "religion": "Mizanius",
+            "nip": "1234567",
+            "nik": "1234567",
+            "name": "Mizan",
+            "gender": "male",
+            "birth_place": "Cimahi",
+            "birth_date": "2001-12-12",
+            "phone": "0821193580",
+            "religion": "Muslim",
+            "marital_status": "divorced",
+            "address": "Jl. Susukan Cimahi 10",
+            "email": "mizan@upi.edu",
+            "password": "mizan123",
+            "role": "Employee"
+        },
+        {
+            "id": 7,
+            "nip": "123456",
+            "nik": "123456",
+            "name": "Hilmi Gay",
+            "gender": "male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-04-12",
+            "phone": "082118928566",
+            "religion": "Muslim",
             "marital_status": "married",
             "address": "Jl. Cipaganti, Setrasari Kulon",
             "email": "richie@employee.nest",
@@ -173,6 +189,34 @@
             "attendance_date": "2024-10-29",
             "check_in": "08:45:00",
             "check_out": "17:20:00"
+        },
+        {
+            "attendance_id": 9,
+            "employee_id": 7,
+            "attendance_date": "2025-01-12",
+            "check_in": "07:20:00",
+            "check_out": "17:20:00"
+        },
+        {
+            "attendance_id": 10,
+            "employee_id": 7,
+            "attendance_date": "2025-01-07",
+            "check_in": "07:12:00",
+            "check_out": "16:12:00"
+        },
+        {
+            "attendance_id": 11,
+            "employee_id": 7,
+            "attendance_date": "2025-02-12",
+            "check_in": "07:00:00",
+            "check_out": "23:59:00"
+        },
+        {
+            "attendance_id": 12,
+            "employee_id": 7,
+            "attendance_date": "2025-02-13",
+            "check_in": "07:20:00",
+            "check_out": "22:50:00"
         }
     ],
     "leave_requests": [
@@ -224,7 +268,27 @@
             "end_date": "2025-01-22",
             "reason": "Fever",
             "applied_on": "2024-12-27T22:15:50.200415",
-            "status": "Rejected"
+            "status": "Approved"
+        },
+        {
+            "leave_request_id": 6,
+            "employee_id": 7,
+            "leave_type": "Sick",
+            "start_date": "2024-01-09",
+            "end_date": "2024-01-10",
+            "reason": "Fever",
+            "applied_on": "2024-12-28T08:23:46.722001",
+            "status": "Pending"
+        },
+        {
+            "leave_request_id": 7,
+            "employee_id": 7,
+            "leave_type": "Vacation",
+            "start_date": "2025-02-15",
+            "end_date": "2025-02-17",
+            "reason": "Want to watch movies",
+            "applied_on": "2024-12-28T08:47:46.255597",
+            "status": "Pending"
         }
     ],
     "notifications": []

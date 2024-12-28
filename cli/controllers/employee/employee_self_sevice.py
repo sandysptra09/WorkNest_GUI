@@ -66,9 +66,9 @@ def record_attendance(user):
             print("⚠️ Invalid date format. Please use YYYY-MM-DD.")
 
     while True:
-        check_in_input = input("Enter Check-in Time (HH:MM) [Leave blank for current time]: ").strip()
+        check_in_input = input("Enter Check-in Time: ").strip()
         if not check_in_input:
-            print("⚠️ Check-in time cannot be empty. Please provide a valid time or leave blank for current time.")
+            print("⚠️ Check-in time cannot be empty.")
             continue
         try:
             check_in_time = datetime.strptime(check_in_input, "%H:%M").time()  # Objek time untuk validasi
@@ -77,21 +77,21 @@ def record_attendance(user):
         except ValueError:
             print("⚠️ Invalid time format. Please use HH:MM.")
 
-    check_out = None
     while True:
-        check_out_input = input("Enter Check-out Time (HH:MM) [Leave blank if not yet checked out]: ").strip()
-        if check_out_input:
-            try:
-                check_out_time = datetime.strptime(check_out_input, "%H:%M").time()  # Objek time untuk validasi
-                if check_out_time < check_in_time:
-                    print("⚠️ Check-out time cannot be earlier than check-in time.")
-                else:
-                    check_out = check_out_time.isoformat()  # Format ISO untuk penyimpanan
-                    break
-            except ValueError:
-                print("⚠️ Invalid time format. Please use HH:MM.")
-        else:
-            break
+        check_out_input = input("Enter Check-out Time (HH:MM): ").strip()
+        if not check_out_input:
+            print("⚠️ Check-out time cannot be empty.")
+            continue
+        try:
+            check_out_time = datetime.strptime(check_out_input, "%H:%M").time()  # Objek time untuk validasi
+            if check_out_time < check_in_time:
+                print("⚠️ Check-out time cannot be earlier than check-in time.")
+            else:
+                check_out = check_out_time.isoformat()  # Format ISO untuk penyimpanan
+                break
+        except ValueError:
+            print("⚠️ Invalid time format. Please use HH:MM.")
+
 
     data = read_json_db()
     employees = data.get("employees", [])
@@ -157,9 +157,11 @@ def request_leave(user):
         except ValueError:
             print("⚠️ Invalid Start Date format. Please use YYYY-MM-DD.")
 
-
     while True:
         end_date_input = input("Enter End Date (YYYY-MM-DD): ").strip()
+        if not end_date_input:
+            print("⚠️ End Date cannot be empty. Please provide a valid date.")
+            continue
         try:
             end_date = datetime.strptime(end_date_input, "%Y-%m-%d").date().isoformat()
             if end_date >= start_date:
@@ -167,6 +169,7 @@ def request_leave(user):
             print("⚠️ End Date cannot be earlier than Start Date.")
         except ValueError:
             print("⚠️ Invalid End Date format. Please use YYYY-MM-DD.")
+
 
     while True:
         reason = input("Enter Leave Reason: ").strip()
