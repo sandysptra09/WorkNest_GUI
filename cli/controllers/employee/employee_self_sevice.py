@@ -18,12 +18,162 @@ def format_time(time_str):
     except ValueError:
         return time_str
 
-
 # view profile
 def view_profile(user):
     print("\n--- 📝 View Profile ---")
     for key, value in user.items():
         print(f"{key.capitalize():<15}: {value}")
+
+# function edit profile
+def edit_profile(user):
+    print("\n--- ✏️ Edit Profile ---")
+    data = read_json_db()
+    employees = data.get("employees", [])
+
+    # Cari employee berdasarkan ID user
+    employee = next((e for e in employees if e["id"] == user["id"]), None)
+    if not employee:
+        print(f"⚠️ No employee found with ID: {user['id']}")
+        return
+
+    print("\nCurrent Profile Information:")
+    for key, value in employee.items():
+        print(f"{key.capitalize():<15}: {value}")
+
+    print("\nEnter new values for the fields you want to update. Leave blank to keep the current value.")
+
+    # edit name
+    while True:
+        new_name = input(f"Name ({employee['name']}): ").strip()
+        if not new_name:
+            print("⚠️ Name cannot be left blank. Please provide a value.")
+            continue
+        if not all(part.isalpha() or part.isspace() for part in new_name):
+            print("⚠️ Name must contain only alphabets.")
+            continue
+        employee['name'] = new_name
+        break
+
+    # edit NIK
+    while True:
+        new_nik = input(f"NIK ({employee['nik']}): ").strip()
+        if not new_nik:
+            print("⚠️ NIK cannot be left blank.")
+            continue
+        if not new_nik.isdigit():
+            print("⚠️ NIK must be an integer.")
+            continue
+        if not (13 <= len(new_nik) <= 16):
+            print("⚠️ NIK must be between 13 and 16 characters long.")
+            continue
+        employee['nik'] = new_nik
+        break
+
+    # edit gender
+    while True:
+        new_gender = input(f"Gender ({employee['gender']}): ").strip().lower()
+        if new_gender not in ['male', 'female']:
+            print("⚠️ Gender must be 'Male' or 'Female'.")
+            continue
+        employee['gender'] = new_gender
+        break
+
+    # edit birth place
+    while True:
+        new_birth_place = input(f"Birth Place ({employee['birth_place']}): ").strip()
+        if not new_birth_place:
+            print("⚠️ Birth place cannot be left blank.")
+            continue
+        if not new_birth_place.isalpha():
+            print("⚠️ Birth place must contain only alphabets.")
+            continue
+        employee['birth_place'] = new_birth_place
+        break
+
+    # edit birth date
+    while True:
+        new_birth_date = input(f"Birth Date ({employee['birth_date']}): ").strip()
+        if not new_birth_date:
+            print("⚠️ Birth date cannot be left blank.")
+            continue
+        try:
+            datetime.strptime(new_birth_date, '%Y-%m-%d')
+            employee['birth_date'] = new_birth_date
+            break
+        except ValueError:
+            print("⚠️ Invalid date format. Please use YYYY-MM-DD.")
+
+    # edit phone
+    while True:
+        new_phone = input(f"Phone ({employee['phone']}): ").strip()
+        if new_phone:
+            if not new_phone.isdigit() or len(new_phone) < 10:
+                print("⚠️ Phone number must contain at least 10 digits and only numbers.")
+                continue
+            employee['phone'] = new_phone
+        else:
+            employee['phone'] = None
+        break
+
+    # edit religion
+    while True:
+        new_religion = input(f"Religion ({employee['religion']}): ").strip()
+        if new_religion:
+            if not new_religion.isalpha():
+                print("⚠️ Religion must contain only alphabets.")
+                continue
+            employee['religion'] = new_religion
+        else:
+            employee['religion'] = None
+        break
+
+    # edit marital status
+    while True:
+        new_marital_status = input(f"Marital Status ({employee['marital_status']}): ").strip().lower()
+        if new_marital_status not in ['single', 'married', 'divorced']:
+            print("⚠️ Invalid marital status. Choose from 'Single', 'Married', or 'Divorced'.")
+            continue
+        employee['marital_status'] = new_marital_status
+        break
+
+    # edit address
+    while True:
+        new_address = input(f"Address ({employee['address']}): ").strip()
+        if not new_address:
+            print("⚠️ Address cannot be left blank.")
+            continue
+        if len(new_address) < 11:
+            print("⚠️ Address must be at least 11 characters long.")
+            continue
+        employee['address'] = new_address
+        break
+
+    # edit Email
+    while True:
+        new_email = input(f"Email ({employee['email']}): ").strip()
+        if not new_email:
+            print("⚠️ Email cannot be left blank.")
+            continue
+        if "@employee.nest" not in new_email:
+            print("⚠️ Email must contain '@employee.nest'.")
+            continue
+        employee['email'] = new_email
+        break
+
+    # edit password
+    while True:
+        new_password = input(f"Password: ").strip()
+        if not new_password:
+            print("⚠️ Password cannot be left blank.")
+            continue
+        if len(new_password) < 8:
+            print("⚠️ Password must be at least 8 characters long.")
+            continue
+        employee['password'] = new_password
+        break
+
+    save_data(data)
+    print("\n✅ Profile updated successfully!")
 
 # function to view attendance records
 def view_attendance(user):
@@ -48,16 +198,16 @@ def view_attendance(user):
 def record_attendance(user):
     print("\n--- 📝 Record Attendance ---")
 
-    # Ambil ID karyawan dari user
+    # get employee ID from user
     employee_id = user.get("id")
     if not employee_id:
         print("⚠️ Unable to determine the employee ID.")
         return
 
     while True:
-        attendance_date_input = input("Enter Attendance Date (YYYY-MM-DD) [Leave blank for today]: ").strip()
+        attendance_date_input = input("Enter Attendance Date (YYYY-MM-DD): ").strip()
         if not attendance_date_input:
-            print("⚠️ Attendance date cannot be empty. Please provide a valid date or leave blank for today.")
+            print("⚠️ Attendance date cannot be empty. Please provide a valid date.")
             continue
         try:
             attendance_date = datetime.strptime(attendance_date_input, "%Y-%m-%d").date().isoformat()
@@ -71,7 +221,7 @@ def record_attendance(user):
             print("⚠️ Check-in time cannot be empty.")
             continue
         try:
-            check_in_time = datetime.strptime(check_in_input, "%H:%M").time()  # Objek time untuk validasi
+            check_in_time = datetime.strptime(check_in_input, "%H:%M").time()  
             check_in = check_in_time.isoformat()  # Format ISO untuk penyimpanan
             break
         except ValueError:
@@ -83,11 +233,11 @@ def record_attendance(user):
             print("⚠️ Check-out time cannot be empty.")
             continue
         try:
-            check_out_time = datetime.strptime(check_out_input, "%H:%M").time()  # Objek time untuk validasi
+            check_out_time = datetime.strptime(check_out_input, "%H:%M").time()  
             if check_out_time < check_in_time:
                 print("⚠️ Check-out time cannot be earlier than check-in time.")
             else:
-                check_out = check_out_time.isoformat()  # Format ISO untuk penyimpanan
+                check_out = check_out_time.isoformat()  
                 break
         except ValueError:
             print("⚠️ Invalid time format. Please use HH:MM.")
@@ -134,7 +284,7 @@ def record_attendance(user):
 def request_leave(user):
     print("\n--- 🗒️ Request Leave ---")
 
-    # Ambil employee_id dari user
+    # get employee ID from user
     employee_id = user.get("id")
     if not employee_id:
         print("⚠️ Unable to determine the employee ID.")

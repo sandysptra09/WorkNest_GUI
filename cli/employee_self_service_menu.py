@@ -1,5 +1,6 @@
 from controllers.employee.employee_self_sevice import (
     view_profile,
+    edit_profile,
     view_attendance,
     record_attendance,
     request_leave,
@@ -17,11 +18,12 @@ def manage_employee_self_service(user):
         
         print("┌───────────────────────────────────────────────────────────────┐")
         print("│  1. 📄   - View Profile                                       │")
-        print("│  2. 🗓️    - View Attendance Records                            │")
-        print("│  3. ✉️    - Record Attendance                                  │")
-        print("│  4. 📊   - Submit Leave Request                               │")
-        print("│  5. 📋   - View Leave Requests                                │")
-        print("│  6. 🔙   - Back to Dashboard                                  │")
+        print("│  2. ✏️    - Edit Profile                                       │")
+        print("│  3. 🗓️    - View Attendance Records                            │")
+        print("│  4. ✉️    - Record Attendance                                  │")
+        print("│  5. 📊   - Submit Leave Request                               │")
+        print("│  6. 📋   - View Leave Requests                                │")
+        print("│  7. 🔙   - Back to Dashboard                                  │")
         print("└───────────────────────────────────────────────────────────────┘")
         
         # 
@@ -30,14 +32,16 @@ def manage_employee_self_service(user):
         if choice == '1':
             view_profile(user)
         elif choice == '2':
-            view_attendance(user)
+            edit_profile(user)
         elif choice == '3':
-            record_attendance(user)
+            view_attendance(user)
         elif choice == '4':
-            request_leave(user)
+            record_attendance(user)
         elif choice == '5':
-            view_leave_status(user)
+            request_leave(user)
         elif choice == '6':
+            view_leave_status(user)
+        elif choice == '7':
             break  
         else:
             
