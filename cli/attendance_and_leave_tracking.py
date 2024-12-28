@@ -5,8 +5,13 @@ from controllers.manager.track_attendance_and_leave import (
 )
 from utils.utils import read_json_db
 
+from time import sleep
+
+wait = sleep
+
 def attendance_and_leave_menu():
     while True:
+        wait(3)
         print("\n" + "=" * 60)
         print("              🕒 Attendance and Leave Tracking              ")
         print("=" * 60)

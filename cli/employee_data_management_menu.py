@@ -8,6 +8,8 @@ from controllers.manager.employee_data_management import (
 from utils.utils import read_json_db
 from time import sleep
 
+wait = sleep
+
 # load existing data from JSON
 data = read_json_db()
 employees = data.get("employees", [])
@@ -15,6 +17,7 @@ employees = data.get("employees", [])
 # function to manage employee data
 def manage_employee_data():
     while True:
+        wait(3)
         # display the Employee Data Management menu
         print("\n" + "=" * 60)
         print("                📋 Employee Data Management                ")

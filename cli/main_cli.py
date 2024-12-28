@@ -1,8 +1,12 @@
 from auth.auth import login
 from pages.admin_dashboard import admin_dashboard
 from pages.employee_dashboard import employee_dashboard
+from time import sleep
+
+wait = sleep
 
 def main():
+    wait(2)
     print("\n" + "┌" + "─" * 63 + "┐")
     print("│ 🌟  Welcome to WorkNest! 🌟                                   │")
     print("├" + "─" * 63 + "┤")
@@ -31,11 +35,17 @@ def main():
     
     # if login failed
     else:
+        wait(0.5)
         print("\n" + "┌" + "─" * 63 + "┐")
+        wait(0.5)
         print("│ ❌  Login Failed. Exiting Program.                            │")
+        wait(1.5)
         print("├" + "─" * 63 + "┤")
+        wait(0.5)
         print("│ 💡  Tip: Ensure your email and password are correct.          │")
-        print("│ 🔁  If you forgot your password, contact your admin.          │")
+        wait(0.5)
+        print("│ 🔁  If you forgot your password, contact our admin.           │")
+        wait(0.5)
         print("└" + "─" * 63 + "┘")
 
 if __name__ == "__main__":

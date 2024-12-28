@@ -1,6 +1,9 @@
 import json
 from utils.utils import read_json_db, save_data
 from datetime import datetime
+from time import sleep
+
+wait = sleep
 
 # function to format date
 def format_date(date_str):
@@ -20,12 +23,14 @@ def format_time(time_str):
 
 # view profile
 def view_profile(user):
+    wait(2)
     print("\n--- 📝 View Profile ---")
     for key, value in user.items():
         print(f"{key.capitalize():<15}: {value}")
 
 # function edit profile
 def edit_profile(user):
+    wait(2)
     print("\n--- ✏️ Edit Profile ---")
     data = read_json_db()
     employees = data.get("employees", [])
@@ -165,6 +170,7 @@ def edit_profile(user):
 
 # function to view attendance records
 def view_attendance(user):
+    wait(2)
     print("\n--- 📅 View Attendance Records ---")
     data = read_json_db()
     attendances = data['attendances']
@@ -184,6 +190,7 @@ def view_attendance(user):
 
 # function to record attendance
 def record_attendance(user):
+    wait(2)
     print("\n--- 📝 Record Attendance ---")
 
     # get employee ID from user
@@ -270,6 +277,7 @@ def record_attendance(user):
 
 # function to request leave
 def request_leave(user):
+    wait(2)
     print("\n--- 🗒️ Request Leave ---")
 
     # get employee ID from user
@@ -344,6 +352,7 @@ def request_leave(user):
 
 # function to view leave requests
 def view_leave_status(user):
+    wait(2)
     print("\n=== 📂 View Leave Status ===")
     data = read_json_db()
     leave_requests = data.get('leave_requests', [])
