@@ -6,6 +6,7 @@ from controllers.manager.employee_data_management import (
     delete_employee
 )
 from utils.utils import read_json_db
+from time import sleep
 
 # load existing data from JSON
 data = read_json_db()
@@ -42,7 +43,7 @@ def manage_employee_data():
                 except ValueError:
                     print("❌ NIP must be an integer.")
                     continue
-                if not len(nip) != 8:  # Check the length of NIP
+                if len(nip) != 8:  # Check the length of NIP
                     print("❌ NIP must be 8 characters long.")
                     continue
                 if any(emp['nip'] == nip for emp in employees): # Check if NIP already exists
@@ -315,7 +316,7 @@ def manage_employee_data():
                     else:
                         break  # Valid address
                     
-            save = input("Save the changes? (y/n): ").lower()
+            save = input("\nSave the changes? (y/n): ").lower()
             if save == 'y':
                 # Pass the updates as keyword arguments
                 update_employee(
@@ -333,7 +334,8 @@ def manage_employee_data():
             
             else:
                 print("❌ Update cancelled.")
-                break
+                sleep(3)
+                continue
 
 
         elif choice == '5':
@@ -345,3 +347,4 @@ def manage_employee_data():
             break  
         else:
             print("Invalid choice. Please try again.")
+
