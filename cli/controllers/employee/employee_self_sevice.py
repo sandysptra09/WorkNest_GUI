@@ -35,7 +35,7 @@ def edit_profile(user):
     data = read_json_db()
     employees = data.get("employees", [])
 
-    # Cari employee berdasarkan ID user
+    # get employee ID from user
     employee = next((e for e in employees if e["id"] == user["id"]), None)
     if not employee:
         print(f"⚠️ No employee found with ID: {user['id']}")
@@ -47,7 +47,7 @@ def edit_profile(user):
 
     print("\nEnter new values for the fields you want to update. Leave blank to keep the current value.")
 
-    # Edit Name
+    # edit name
     while True:
         new_name = input(f"Name ({employee['name']}): ").strip()
         if new_name:  # if not blank, update
@@ -57,7 +57,7 @@ def edit_profile(user):
             employee['name'] = new_name
         break
 
-    # Edit NIK
+    # edit NIK
     while True:
         new_nik = input(f"NIK ({employee['nik']}): ").strip()
         if new_nik:  # if not blank, update
@@ -70,7 +70,7 @@ def edit_profile(user):
             employee['nik'] = new_nik
         break
 
-    # Edit Gender
+    # edit gender
     while True:
         new_gender = input(f"Gender ({employee['gender']}): ").strip().lower()
         if new_gender:  # if not blank, update
@@ -80,7 +80,7 @@ def edit_profile(user):
             employee['gender'] = new_gender
         break
 
-    # Edit Birth Place
+    # edit birth place
     while True:
         new_birth_place = input(f"Birth Place ({employee['birth_place']}): ").strip()
         if new_birth_place:  # if not blank, update
@@ -90,7 +90,7 @@ def edit_profile(user):
             employee['birth_place'] = new_birth_place
         break
 
-    # Edit Birth Date
+    # edit birth date
     while True:
         new_birth_date = input(f"Birth Date ({employee['birth_date']}): ").strip()
         if new_birth_date:  # if not blank, update
@@ -103,7 +103,7 @@ def edit_profile(user):
         else:
             break
 
-    # Edit Phone
+    # edit phone
     while True:
         new_phone = input(f"Phone ({employee['phone']}): ").strip()
         if new_phone:  # if not blank, update
@@ -114,7 +114,7 @@ def edit_profile(user):
         else:  # if blank, retain old value
             break
 
-    # Edit Religion
+    # edit religion
     while True:
         new_religion = input(f"Religion ({employee['religion']}): ").strip()
         if new_religion:  # if not blank, update
@@ -124,7 +124,7 @@ def edit_profile(user):
             employee['religion'] = new_religion
         break
 
-    # Edit Marital Status
+    # edit marital status
     while True:
         new_marital_status = input(f"Marital Status ({employee['marital_status']}): ").strip().lower()
         if new_marital_status:  # if not blank, update
@@ -134,7 +134,7 @@ def edit_profile(user):
             employee['marital_status'] = new_marital_status
         break
 
-    # Edit Address
+    # edit Address
     while True:
         new_address = input(f"Address ({employee['address']}): ").strip()
         if new_address:  # if not blank, update
@@ -144,7 +144,7 @@ def edit_profile(user):
             employee['address'] = new_address
         break
 
-    # Edit Email
+    # edit Email
     while True:
         new_email = input(f"Email ({employee['email']}): ").strip()
         if new_email:  # if not blank, update
@@ -154,7 +154,7 @@ def edit_profile(user):
             employee['email'] = new_email
         break
 
-    # Edit Password
+    # edit password
     while True:
         new_password = input(f"Password: ").strip()
         if new_password:  # if not blank, update
