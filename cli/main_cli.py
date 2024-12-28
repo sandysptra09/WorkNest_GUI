@@ -32,8 +32,8 @@ def main():
     # if login failed
     else:
         print("\n" + "┌" + "─" * 63 + "┐")
-        print("│ ❌  Login Failed. Exiting Program.                             │")
-        print("├" + "─" * 61 + "┤")
+        print("│ ❌  Login Failed. Exiting Program.                            │")
+        print("├" + "─" * 63 + "┤")
         print("│ 💡  Tip: Ensure your email and password are correct.          │")
         print("│ 🔁  If you forgot your password, contact your admin.          │")
         print("└" + "─" * 63 + "┘")
