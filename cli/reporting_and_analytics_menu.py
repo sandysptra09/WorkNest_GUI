@@ -1,5 +1,6 @@
 from utils.utils import read_json_db
 from time import sleep
+import pandas as pd
 
 wait = sleep 
 
@@ -16,15 +17,6 @@ def reporting_and_analytics():
         
         print("\n") 
         
-        print("┌───────────────────────────────────────────────────────────────┐")
-        print("│  1. 📄   - View Profile                                       │")
-        print("│  2. ✏️    - Edit Profile                                       │")
-        print("│  3. 🗓️    - View Attendance Records                            │")
-        print("│  4. ✉️    - Record Attendance                                  │")
-        print("│  5. 📊   - Submit Leave Request                               │")
-        print("│  6. 📋   - View Leave Requests                                │")
-        print("│  7. 🔙   - Back to Dashboard                                  │")
-        print("└───────────────────────────────────────────────────────────────┘")
         
         # 
         choice = input("\nPlease select an option (1-6): ").strip()
