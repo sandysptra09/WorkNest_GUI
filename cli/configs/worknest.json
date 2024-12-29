@@ -201,84 +201,112 @@
             "employee_id": 2,
             "attendance_date": "2024-12-12",
             "check_in": "07:00:00",
-            "check_out": "17:00:00"
+            "check_out": "17:00:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 2,
             "employee_id": 1,
             "attendance_date": "2024-12-23",
             "check_in": "07:30",
-            "check_out": "16:30"
+            "check_out": "16:30",
+            "status": "Attend"
         },
         {
             "attendance_id": 3,
             "employee_id": 2,
             "attendance_date": "2024-12-09",
             "check_in": "07:45:00",
-            "check_out": "18:30:00"
+            "check_out": "18:30:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 4,
             "employee_id": 5,
             "attendance_date": "2024-12-27",
             "check_in": "07:45:00",
-            "check_out": "19:30:00"
+            "check_out": "19:30:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 5,
             "employee_id": 5,
             "attendance_date": "2024-12-12",
             "check_in": "08:12:00",
-            "check_out": "07:12:00"
+            "check_out": "07:12:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 6,
             "employee_id": 5,
             "attendance_date": "2024-09-28",
             "check_in": "05:20:00",
-            "check_out": null
+            "check_out": null,
+            "status": "Attend"
         },
         {
             "attendance_id": 7,
             "employee_id": 5,
             "attendance_date": "2024-09-29",
             "check_in": "08:45:00",
-            "check_out": "19:21:00"
+            "check_out": "19:21:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 8,
             "employee_id": 5,
             "attendance_date": "2024-10-29",
             "check_in": "08:45:00",
-            "check_out": "17:20:00"
+            "check_out": "17:20:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 9,
             "employee_id": 7,
             "attendance_date": "2025-01-12",
             "check_in": "07:20:00",
-            "check_out": "17:20:00"
+            "check_out": "17:20:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 10,
             "employee_id": 7,
             "attendance_date": "2025-01-07",
             "check_in": "07:12:00",
-            "check_out": "16:12:00"
+            "check_out": "16:12:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 11,
             "employee_id": 7,
             "attendance_date": "2025-02-12",
             "check_in": "07:00:00",
-            "check_out": "23:59:00"
+            "check_out": "23:59:00",
+            "status": "Attend"
         },
         {
             "attendance_id": 12,
             "employee_id": 7,
             "attendance_date": "2025-02-13",
             "check_in": "07:20:00",
-            "check_out": "22:50:00"
+            "check_out": "22:50:00",
+            "status": "Attend"
+        },
+        {
+            "attendance_id": 13,
+            "employee_id": 7,
+            "attendance_date": "2025-01-01",
+            "check_in": null,
+            "check_out": null,
+            "status": "Absent"
+        },
+        {
+            "attendance_id": 14,
+            "employee_id": 7,
+            "attendance_date": "2024-12-30",
+            "check_in": null,
+            "check_out": null,
+            "status": "Absent"
         }
     ],
     "leave_requests": [
