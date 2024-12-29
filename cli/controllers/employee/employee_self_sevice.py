@@ -259,7 +259,7 @@ def record_attendance(user):
         "employee_id": employee_id,
         "attendance_date": attendance_date,
         "check_in": check_in,
-        "check_out": check_out
+        "check_out": check_out,
     }
     attendances.append(new_record)
     data["attendances"] = attendances

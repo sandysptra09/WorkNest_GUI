@@ -137,7 +137,8 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "sandywork@manager.nest",
             "password": "manager1",
-            "role": "Admin"
+            "role": "Admin",
+            "notifications": []
         },
         {
             "id": 2,
@@ -154,7 +155,8 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "ghassanwork@manager.nest",
             "password": "manager2",
-            "role": "Admin"
+            "role": "Admin",
+            "notifications": []
         },
         {
             "id": 3,
@@ -171,7 +173,8 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "iqbalwork@manager.nest",
             "password": "manager3",
-            "role": "Admin"
+            "role": "Admin",
+            "notifications": []
         },
         {
             "id": 4,
@@ -188,7 +191,8 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "raissawork@manager.nest",
             "password": "manager4",
-            "role": "Admin"
+            "role": "Admin",
+            "notifications": []
         }
     ],
     "attendances": [
