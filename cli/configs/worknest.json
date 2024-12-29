@@ -15,7 +15,8 @@
             "address": "Jl. Merdeka No. 1, Bandung",
             "email": "johndoe@example.com",
             "password": "password123",
-            "role": "Employee"
+            "role": "Employee",
+            "notifications": []
         },
         {
             "id": 2,
@@ -31,7 +32,8 @@
             "address": "Cikarang",
             "email": "radenemployee@gmail.nest",
             "password": "raden1",
-            "role": "Employee"
+            "role": "Employee",
+            "notifications": []
         },
         {
             "id": 3,
@@ -47,7 +49,8 @@
             "address": "Sukabumi",
             "email": "ilyasemployee@gmail.nest",
             "password": "ilyas123",
-            "role": "Employee"
+            "role": "Employee",
+            "notifications": []
         },
         {
             "id": 4,
@@ -63,7 +66,8 @@
             "address": "Alun-alun Banjaran",
             "email": "radensemployee@gmail.nest",
             "password": "radens123",
-            "role": "Employee"
+            "role": "Employee",
+            "notifications": []
         },
         {
             "id": 5,
@@ -79,7 +83,8 @@
             "address": "Cimahi",
             "email": "raihanfauzi@employee.nest",
             "password": "raihan123",
-            "role": "Employee"
+            "role": "Employee",
+            "notifications": []
         },
         {
             "id": 6,
@@ -95,7 +100,8 @@
             "address": "Jl. Susukan Cimahi 10",
             "email": "mizan@upi.edu",
             "password": "mizan123",
-            "role": "Employee"
+            "role": "Employee",
+            "notifications": []
         },
         {
             "id": 7,
@@ -110,8 +116,9 @@
             "marital_status": "single",
             "address": "Jl. Buah Batu",
             "email": "hilmy@employee.nest",
-            "password": "hilmi123",
-            "role": "Employee"
+            "password": "hilmy123",
+            "role": "Employee",
+            "notifications": []
         }
     ],
     "admins": [
@@ -128,8 +135,59 @@
             "marital": "Single",
             "status": "Active",
             "address": "Jl. Raya No. 10, Jakarta",
-            "email": "managersandy@gmail.nest",
+            "email": "sandywork@manager.nest",
             "password": "manager1",
+            "role": "Admin"
+        },
+        {
+            "id": 2,
+            "nip": "987654321",
+            "nik": "3209876543210001",
+            "name": "Ghassan Ariq Muzaki",
+            "gender": "Male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-05-09",
+            "phone": "081141248692",
+            "religion": "Islamic",
+            "marital": "Single",
+            "status": "Active",
+            "address": "Jl. Raya No. 10, Jakarta",
+            "email": "ghassanwork@manager.nest",
+            "password": "manager2",
+            "role": "Admin"
+        },
+        {
+            "id": 3,
+            "nip": "987654321",
+            "nik": "3209876543210001",
+            "name": "M Iqbal Ramadhan",
+            "gender": "Male",
+            "birth_place": "Bandung",
+            "birth_date": "2006-05-09",
+            "phone": "081141248692",
+            "religion": "Islamic",
+            "marital": "Single",
+            "status": "Active",
+            "address": "Jl. Raya No. 10, Jakarta",
+            "email": "iqbalwork@manager.nest",
+            "password": "manager3",
+            "role": "Admin"
+        },
+        {
+            "id": 4,
+            "nip": "987654321",
+            "nik": "3209876543210001",
+            "name": "Raissa Fasya",
+            "gender": "Female",
+            "birth_place": "Bandung",
+            "birth_date": "2006-05-09",
+            "phone": "081141248692",
+            "religion": "Islamic",
+            "marital": "Single",
+            "status": "Active",
+            "address": "Jl. Raya No. 10, Jakarta",
+            "email": "raissawork@manager.nest",
+            "password": "manager4",
             "role": "Admin"
         }
     ],
@@ -278,7 +336,7 @@
             "end_date": "2024-01-10",
             "reason": "Fever",
             "applied_on": "2024-12-28T08:23:46.722001",
-            "status": "Pending"
+            "status": "Approved"
         },
         {
             "leave_request_id": 7,
@@ -288,8 +346,7 @@
             "end_date": "2025-02-17",
             "reason": "Want to watch movies",
             "applied_on": "2024-12-28T08:47:46.255597",
-            "status": "Pending"
+            "status": "Approved"
         }
-    ],
-    "notifications": []
+    ]
 }

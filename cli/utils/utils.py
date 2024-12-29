@@ -11,7 +11,6 @@ def read_json_db():
             'admins': [],
             'attendances': [],
             'leave_requests': [],
-            'notifications': [],
         }
     
     try:

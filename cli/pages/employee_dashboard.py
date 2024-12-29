@@ -1,11 +1,15 @@
 from employee_self_service_menu import manage_employee_self_service
+from controllers.employee.employee_notifications import get_notifications, show_employee_notifications
 from time import sleep
 
 wait = sleep
 
-# add user as parameter
 def employee_dashboard(user):
     while True:
+        # Mengambil jumlah notifikasi untuk karyawan
+        notifications = get_notifications(user["id"])
+        notifications_count = len(notifications)
+
         wait(3)
         print("\n" + "=" * 60)
         print("                🛠️ Employee Self-Service Dashboard                ")
@@ -14,21 +18,25 @@ def employee_dashboard(user):
         print("\n")
         print("┌───────────────────────────────────────────────────────────────┐")
         print(f"│  Hello, {user['name']}!                                         │")
-        print(f"│  You have 2 new notifications!!                               │")
+        print(f"│  You have {notifications_count} new notification(s)!!                             │")
+        print("│                                                               │")
         print("│  1. 🛠️  - Employee Self-Service                                │")
-        print("│  2. ❌ - Logout                                               │")
+        print("│  2. 🔔 - View Notifications                                   │")
+        print("│  3. ❌ - Logout                                               │")
         print("└───────────────────────────────────────────────────────────────┘")
         
-        choice = input("\nPlease select a feature (1-2): ").strip()
+        choice = input("\nPlease select a feature (1-3): ").strip()
         if choice == '1':
             print("\n--- 🛠️ Employee Self-Service ---")
             manage_employee_self_service(user)
         elif choice == '2':
+            show_employee_notifications(user["id"])
+        elif choice == '3':
             print("\nLogging out...")
             wait(3)
             break
         else:
-            print("\n⚠️ Invalid choice. Please select a valid option (1-2).")
+            print("\n⚠️ Invalid choice. Please select a valid option (1-3).")
             wait(2)
         
         input("\nPress Enter to return to the employee dashboard...")

@@ -16,7 +16,7 @@ def admin_dashboard(user):
         print("\n")
         print("┌───────────────────────────────────────────────────────────────┐")
         print(f"│  Hello, {user['name']}!                                        │")
-        print(f"│  You have 6 new notifications!!                                │")
+        print(f"│  You have 6 new notifications!!                               │")
         print("│  1. 📋 - Employee Data Management                             │")
         print("│  2. 🕒 - Attendance and Leave Tracking                        │")
         print("│  3. 📊 - Reporting and Analytics                              │")
