@@ -251,7 +251,7 @@ def record_attendance(user):
         print(f"\n✅ Attendance recorded as 'Absent' for {employee['name']} on {format_date(attendance_date)}.")
         return
 
-    # If attending, proceed with check-in and check-out
+    # if attending, proceed with check-in and check-out
     while True:
         check_in_input = input("Enter Check-in Time (HH:MM): ").strip()
         if not check_in_input:

@@ -42,23 +42,24 @@ def view_attendance():
                 break
 
             print("\nAttendance Records:")
-            print("=" * 80)
-            print(f"{'ID':<5} {'Name':<20} {'Date':<20} {'Check-in':<14} {'Check-out':<14}")
-            print("-" * 80)
+            print("=" * 100)
+            print(f"{'ID':<5} {'Name':<20} {'Date':<20} {'Status':<15} {'Check-in':<14} {'Check-out':<14}")
+            print("-" * 100)
 
             for record in paginated_records:
                 employee = next((e for e in employees if e["id"] == record["employee_id"]), None)
                 if not employee:
                     # skip if employee data not found
                     continue  
-                
+
                 name = employee.get("name", "Unknown")
                 attendance_date = format_date(record.get("attendance_date", ""))
-                check_in = format_time(record.get("check_in", ""))
-                check_out = format_time(record.get("check_out", ""))
+                status = record.get("status", "Unknown")
+                check_in = format_time(record.get("check_in", "")) if record.get("check_in") else "N/A"
+                check_out = format_time(record.get("check_out", "")) if record.get("check_out") else "N/A"
 
-                print(f"{record['attendance_id']:<5} {name:<20} {attendance_date:<20} {check_in:<14} {check_out:<14}")
-            print("=" * 80)
+                print(f"{record['attendance_id']:<5} {name:<20} {attendance_date:<20} {status:<15} {check_in:<14} {check_out:<14}")
+            print("=" * 100)
 
             # pagination navigation
             next_action = input("\nPress 'n' for next page, or any other key to exit: ").strip().lower()
