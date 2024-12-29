@@ -178,13 +178,14 @@ def view_attendance(user):
 
     if user_attendance:
         print("\nAttendance Records:\n")
-        print(f"{'Date':<20} {'Check-in':<15} {'Check-out':<15}")
-        print("-" * 50)
+        print(f"{'Date':<20} {'Status':<15} {'Check-in':<15} {'Check-out':<15}")
+        print("-" * 70)
         for record in user_attendance:
             formatted_date = format_date(record['attendance_date'])
-            formatted_check_in = format_time(record['check_in'])
-            formatted_check_out = format_time(record.get('check_out', "N/A"))
-            print(f"{formatted_date:<20} {formatted_check_in:<15} {formatted_check_out:<15}")
+            status = record.get('status', 'Unknown')
+            formatted_check_in = format_time(record['check_in']) if record['check_in'] else "N/A"
+            formatted_check_out = format_time(record['check_out']) if record['check_out'] else "N/A"
+            print(f"{formatted_date:<20} {status:<15} {formatted_check_in:<15} {formatted_check_out:<15}")
     else:
         print("No attendance records found.")
 
@@ -210,33 +211,13 @@ def record_attendance(user):
         except ValueError:
             print("⚠️ Invalid date format. Please use YYYY-MM-DD.")
 
+    # Confirmation: Will the employee attend or not?
     while True:
-        check_in_input = input("Enter Check-in Time: ").strip()
-        if not check_in_input:
-            print("⚠️ Check-in time cannot be empty.")
-            continue
-        try:
-            check_in_time = datetime.strptime(check_in_input, "%H:%M").time()  
-            check_in = check_in_time.isoformat()  # Format ISO untuk penyimpanan
+        confirmation = input("Will you attend today? (yes/no): ").strip().lower()
+        if confirmation in ["yes", "no"]:
             break
-        except ValueError:
-            print("⚠️ Invalid time format. Please use HH:MM.")
-
-    while True:
-        check_out_input = input("Enter Check-out Time (HH:MM): ").strip()
-        if not check_out_input:
-            print("⚠️ Check-out time cannot be empty.")
-            continue
-        try:
-            check_out_time = datetime.strptime(check_out_input, "%H:%M").time()  
-            if check_out_time < check_in_time:
-                print("⚠️ Check-out time cannot be earlier than check-in time.")
-            else:
-                check_out = check_out_time.isoformat()  
-                break
-        except ValueError:
-            print("⚠️ Invalid time format. Please use HH:MM.")
-
+        else:
+            print("⚠️ Please answer with 'yes' or 'no'.")
 
     data = read_json_db()
     employees = data.get("employees", [])
@@ -253,6 +234,52 @@ def record_attendance(user):
             print(f"⚠️ Attendance for {attendance_date} already exists for this employee.")
             return
 
+    if confirmation == "no":
+        # Record absence
+        attendance_id = len(attendances) + 1
+        new_record = {
+            "attendance_id": attendance_id,
+            "employee_id": employee_id,
+            "attendance_date": attendance_date,
+            "check_in": None,
+            "check_out": None,
+            "status": "Absent"
+        }
+        attendances.append(new_record)
+        data["attendances"] = attendances
+        save_data(data)
+        print(f"\n✅ Attendance recorded as 'Absent' for {employee['name']} on {format_date(attendance_date)}.")
+        return
+
+    # If attending, proceed with check-in and check-out
+    while True:
+        check_in_input = input("Enter Check-in Time (HH:MM): ").strip()
+        if not check_in_input:
+            print("⚠️ Check-in time cannot be empty.")
+            continue
+        try:
+            check_in_time = datetime.strptime(check_in_input, "%H:%M").time()
+            check_in = check_in_time.isoformat()
+            break
+        except ValueError:
+            print("⚠️ Invalid time format. Please use HH:MM.")
+
+    while True:
+        check_out_input = input("Enter Check-out Time (HH:MM): ").strip()
+        if not check_out_input:
+            print("⚠️ Check-out time cannot be empty.")
+            continue
+        try:
+            check_out_time = datetime.strptime(check_out_input, "%H:%M").time()
+            if check_out_time < check_in_time:
+                print("⚠️ Check-out time cannot be earlier than check-in time.")
+            else:
+                check_out = check_out_time.isoformat()
+                break
+        except ValueError:
+            print("⚠️ Invalid time format. Please use HH:MM.")
+
+    # Record attendance
     attendance_id = len(attendances) + 1
     new_record = {
         "attendance_id": attendance_id,
@@ -260,6 +287,7 @@ def record_attendance(user):
         "attendance_date": attendance_date,
         "check_in": check_in,
         "check_out": check_out,
+        "status": "Attend"
     }
     attendances.append(new_record)
     data["attendances"] = attendances
@@ -269,10 +297,7 @@ def record_attendance(user):
     # output
     print(f"\n✅ Attendance recorded successfully for {employee['name']} on {format_date(attendance_date)}!")
     print(f"   Check-in: {format_time(check_in)}")
-    if check_out:
-        print(f"   Check-out: {format_time(check_out)}")
-    else:
-        print("   Check-out: Not yet checked out.")
+    print(f"   Check-out: {format_time(check_out)}")
 
 
 # function to request leave
