@@ -359,5 +359,22 @@
             "status": "Pending"
         }
     ],
-    "comments": []
+    "comments": [
+        {
+            "comments_id": 1,
+            "employee_id": 7,
+            "subject": "Feedback",
+            "description": "Keep teh good work!",
+            "from": "Manager",
+            "to": "hilmy@employee.nest"
+        },
+        {
+            "comments_id": 2,
+            "employee_id": 5,
+            "subject": "Feedback",
+            "description": "Keep teh good work!",
+            "from": "Manager",
+            "to": "raihanfauzi@employee.nest"
+        }
+    ]
 }
