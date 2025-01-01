@@ -1,3 +1,6 @@
+import json
+from utils.utils import read_json_db, save_data
+
 # function to calculate performance of employees
 def calculate_performance(row):
     leave_count = row['leave_total']
@@ -48,7 +51,35 @@ def filter_performance(performance_df, performance=None, employee_id=None):
         performance_df = performance_df[performance_df['employee_id'] == employee_id]
     return performance_df
 
-# Function to add comments
-def add_comment(employee_id, comment):
-    # Here you would typically save the comment to a database or file
-    print(f" Comment for Employee ID {employee_id}: {comment}")
+# function to add comments
+def add_reports(employee_id, subject, description):
+    data = read_json_db()
+    employees = data.get("employees", [])
+    
+    # Find the employee's email
+    employee = next((emp for emp in data['employees'] if emp['employee_id'] == int(employee_id)), None)
+    if not employee:
+        print(f"❌ Employee with ID {employee_id} not found.")
+        return
+
+    to_email = employee.get('email', 'N/A')
+    
+    # Generate comment ID
+    comment_id = len(data['comments']) + 1
+    
+    # Create comment entry
+    comment = {
+        "comments_id": comment_id,
+        "employee_id": int(employee_id),
+        "subject": subject,
+        "description": description,
+        "from": 'Manager',
+        "to": to_email
+    }
+    
+    # Append to comments
+    data['comments'].append(comment)
+    save_data(data)
+    
+    print("\n✔️ Comment added successfully!")
+    print(json.dumps(comment, indent=4))

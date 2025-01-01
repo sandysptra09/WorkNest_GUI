@@ -1,6 +1,6 @@
 from utils.utils import read_json_db
 from time import sleep
-from controllers.manager.reporting_and_analytics import filter_performance, add_comment, calculate_performance
+from controllers.manager.reporting_and_analytics import filter_performance, add_reports, calculate_performance
 import pandas as pd
 import json
 
@@ -39,7 +39,7 @@ def reporting_and_analytics():
     print(reporting_table.to_string(index=False))
     
     while True:
-        print("\n1. Filter Reports (by ID)\n2. Filter Reports (by Performance)\n3. Comment\n4. 🔙 Return to Main Menu    ")
+        print("\n1. Filter Reports (by ID)\n2. Filter Reports (by Performance)\n3. Reports\n4. 🔙 Return to Main Menu    ")
         choice = int(input("\n Please select a menu to use (1-4): "))
         if choice == 1:
             employee_id = input("\n Enter Employee ID: ")
@@ -66,14 +66,33 @@ def reporting_and_analytics():
             else:
                 print("\n ❌ Performance does not exist!. Please enter a valid performance!")
         elif choice == 3:
-            employee_id = input("\n Enter Employee ID: ")
-            if not employee_id:
-                print('\n ❌ Employee ID must not be empty!.')
-            elif employee_id.isdigit():
-                comment = input("\n Enter Comment: ")
-                add_comment(employee_id, comment)
-            else:
-                print("\n ❌ Employee ID must be a number!. Please enter a valid ID!")
+            while True:
+                employee_id = input("\n Enter Employee ID: ").strip()
+                if not employee_id:
+                    print('\n ❌ Employee ID must not be empty!')
+                elif not employee_id.isdigit():
+                    print("\n ❌ Employee ID must be a number! Please enter a valid ID.")
+                else:
+                    break 
+
+            while True:
+                subject = input("\n Enter Subject: ").strip()
+                if not subject:
+                    print("\n ❌ Subject must not be empty!")
+                else:
+                    break
+
+            while True:
+                description = input("\n Enter Description: ").strip()
+                if not description:
+                    print("\n ❌ Description must not be empty!")
+                elif len(description) < 10:
+                    print("\n ❌ Description must be at least 10 characters long!")
+                else:
+                    break  
+
+            add_reports(employee_id, subject, description)
+
         elif choice == 4:
             break
         else:
