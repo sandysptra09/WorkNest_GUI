@@ -1,7 +1,7 @@
 import json
 from utils.utils import read_json_db
 
-# function to get notifications
+# Fungsi untuk mengambil notifikasi
 def get_notifications(employee_id):
     data = read_json_db()
     all_notifications = data.get("notifications", [])
@@ -10,11 +10,19 @@ def get_notifications(employee_id):
     ]
     return notifications
 
+# Fungsi untuk mengambil komentar berdasarkan employee_id
+def get_comments(employee_id):
+    data = read_json_db()
+    all_comments = data.get("comments", [])
+    comments = [
+        comment for comment in all_comments if comment["employee_id"] == employee_id
+    ]
+    return comments
 
-# function to show notifications for a specific employee
+# function to show all notifications
 def show_employee_notifications(employee_id):
-
     notifications = get_notifications(employee_id)
+    comments = get_comments(employee_id)
 
     if notifications:
         print("\n--- 🔔 Notifications ---")
@@ -28,3 +36,12 @@ def show_employee_notifications(employee_id):
     else:
         print("\n--- 🔔 Notifications ---")
         print("No new notifications at the moment.\n")
+
+    if comments:
+        print("\n--- 📩 Comments ---")
+        for i, comment in enumerate(comments, 1):
+            print(f"{i}. {comment['subject']} - {comment['description']} (From: {comment['from']})")
+    else:
+        print("\n--- 📩 Comments ---")
+        print("No new comments at the moment.\n")
+
