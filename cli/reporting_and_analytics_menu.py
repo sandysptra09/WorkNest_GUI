@@ -40,44 +40,51 @@ def reporting_and_analytics():
     
     while True:
         print("\n1. Filter Reports (by ID)\n2. Filter Reports (by Performance)\n3. Comment\n4. 🔙 Return to Main Menu    ")
-        choice = int(input("\n Please select a menu to use (1-4): "))
-        if choice == 1:
-            employee_id = input("\n Enter Employee ID: ")
-            if not employee_id:
-                print("\n ❌ Employee ID must not be empty!.")
-            elif employee_id.isdigit():
-                filtered_df = filter_performance(performance_df, employee_id=int(employee_id))
-                if filtered_df.empty:
-                    print("\n ❌ No data to be filtered.")
+        choice = input("\n Please select a menu to use (1-4): ")
+        if not choice:
+            print("\n⚠️  Fields must not be empty!. Please select a valid feature!.")
+            wait(2)
+        elif choice.isdigit():
+            if choice == 1:
+                employee_id = input("\n Enter Employee ID: ")
+                if not employee_id:
+                    print("\n ❌ Employee ID must not be empty!.")
+                elif employee_id.isdigit():
+                    filtered_df = filter_performance(performance_df, employee_id=int(employee_id))
+                    if filtered_df.empty:
+                        print("\n ❌ No data to be filtered.")
+                    else:
+                        print(filtered_df.to_string(index=False))
                 else:
-                    print(filtered_df.to_string(index=False))
-            else:
-                print("\n ❌ Employee ID must be a number!. Please enter a valid ID!")
-        elif choice == 2:
-            performance = input("\n Enter Performance (e.g. 'Very Good', 'Good', 'Average', and 'Bad'): ").lower()
-            if not performance:
-                print("\n ❌ Performance must not be empty!")
-            elif performance in performance_df['overall_performance'].values:
-                filtered_df = filter_performance(performance_df, performance=performance)
-                if filtered_df.empty:
-                    print('\n ❌ No data to be filtered.')
+                    print("\n ❌ Employee ID must be a number!. Please enter a valid ID!")
+            elif choice == 2:
+                performance = input("\n Enter Performance (e.g. 'Very Good', 'Good', 'Average', and 'Bad'): ").lower()
+                if not performance:
+                    print("\n ❌ Performance must not be empty!")
+                elif performance in performance_df['overall_performance'].values:
+                    filtered_df = filter_performance(performance_df, performance=performance)
+                    if filtered_df.empty:
+                        print('\n ❌ No data to be filtered.')
+                    else:
+                        print(filtered_df.to_string(index=False))
                 else:
-                    print(filtered_df.to_string(index=False))
+                    print("\n ❌ Performance does not exist!. Please enter a valid performance!")
+            elif choice == 3:
+                employee_id = input("\n Enter Employee ID: ")
+                if not employee_id:
+                    print('\n ❌ Employee ID must not be empty!.')
+                elif employee_id.isdigit():
+                    comment = input("\n Enter Comment: ")
+                    add_comment(employee_id, comment)
+                else:
+                    print("\n ❌ Employee ID must be a number!. Please enter a valid ID!")
+            elif choice == 4:
+                break
             else:
-                print("\n ❌ Performance does not exist!. Please enter a valid performance!")
-        elif choice == 3:
-            employee_id = input("\n Enter Employee ID: ")
-            if not employee_id:
-                print('\n ❌ Employee ID must not be empty!.')
-            elif employee_id.isdigit():
-                comment = input("\n Enter Comment: ")
-                add_comment(employee_id, comment)
-            else:
-                print("\n ❌ Employee ID must be a number!. Please enter a valid ID!")
-        elif choice == 4:
-            break
+                print("\n⚠️  Invalid choice!. Please select a valid option (1-4).")
         else:
-            print("\n ❌ Invalid choice. Please select a valid option!")
-        
+            print("\n⚠️ Please only input numbers (1-4).")
+            wait(2)
+            
         input("\nPress Enter to return to Reporting and Analytics menu...")
    

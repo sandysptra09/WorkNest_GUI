@@ -33,24 +33,30 @@ def manage_employee_self_service(user):
         #
         wait(2) 
         choice = input("\nPlease select an option (1-7): ").strip()
-        
-        if choice == '1':
-            view_profile(user)
-        elif choice == '2':
-            edit_profile(user)
-        elif choice == '3':
-            view_attendance(user)
-        elif choice == '4':
-            record_attendance(user)
-        elif choice == '5':
-            request_leave(user)
-        elif choice == '6':
-            view_leave_status(user)
-        elif choice == '7':
-            break  
+        if not choice:
+            print("\n⚠️  Fields must not be empty!. Please select a valid feature!.")
+            wait(2)
+        elif choice.isdigit():
+            choice = int(choice)
+            if choice == 1:
+                view_profile(user)
+            elif choice == 2:
+                edit_profile(user)
+            elif choice == 3:
+                view_attendance(user)
+            elif choice == 4:
+                record_attendance(user)
+            elif choice == 5:
+                request_leave(user)
+            elif choice == 6:
+                view_leave_status(user)
+            elif choice == 7:
+                break  
+            else:
+                print("\n⚠️ Invalid choice. Please select a valid option (1-7).")
         else:
-            
-            print("\n⚠️ Invalid choice. Please select a valid option (1-7).")
-
+            print("\n⚠️ Please only input numbers (1-7).")
+            wait(2)
+        
         input("\nPress Enter to return to Employee Self-Service menu...")
 
