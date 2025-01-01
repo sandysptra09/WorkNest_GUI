@@ -4,21 +4,12 @@ from utils.utils import read_json_db
 # function to get notifications
 def get_notifications(employee_id):
     data = read_json_db()
-    leave_requests = data.get("leave_requests", [])
-    notifications = []
-
-    for leave in leave_requests:
-        if leave["employee_id"] == employee_id:
-            notifications.append({
-                "id": leave["leave_request_id"],
-                "type": leave["leave_type"],
-                "start": leave["start_date"],
-                "end": leave["end_date"],
-                "reason": leave["reason"],
-                "status": leave["status"]
-            })
-
+    all_notifications = data.get("notifications", [])
+    notifications = [
+        notif for notif in all_notifications if notif["employee_id"] == employee_id
+    ]
     return notifications
+
 
 # function to show notifications for a specific employee
 def show_employee_notifications(employee_id):

@@ -75,7 +75,7 @@ def edit_profile(user):
         new_gender = input(f"Gender ({employee['gender']}): ").strip().lower()
         if new_gender:  # if not blank, update
             if new_gender not in ['male', 'female']:
-                print("⚠️ Gender must be 'Male' or 'Female'.")
+                print("⚠️ Invalid gender. Please enter 'male' or 'female'.")
                 continue
             employee['gender'] = new_gender
         break
@@ -211,7 +211,7 @@ def record_attendance(user):
         except ValueError:
             print("⚠️ Invalid date format. Please use YYYY-MM-DD.")
 
-    # Confirmation: Will the employee attend or not?
+    # confirmation: Will the employee attend or not?
     while True:
         confirmation = input("Will you attend today? (yes/no): ").strip().lower()
         if confirmation in ["yes", "no"]:
@@ -311,11 +311,17 @@ def request_leave(user):
         print("⚠️ Unable to determine the employee ID.")
         return
 
+    # Valid leave types
+    valid_leave_types = ["Personal", "Sick", "Vacation"]
+
     while True:
-        leave_type = input("Enter Leave Type (e.g., Sick, Vacation): ").strip()
-        if leave_type:
+        leave_type = input("Enter Leave Type (Personal, Sick, Vacation): ").strip()
+        if leave_type and leave_type.isalpha() and leave_type in valid_leave_types:
             break
-        print("⚠️ Leave Type cannot be empty. Please enter a valid leave type.")
+        print(
+            "⚠️  Invalid Leave Type. Please choose from: Personal, Sick, or Vacation. "
+            "Leave type cannot be empty or contain numbers."
+        )
 
     while True:
         start_date_input = input("Enter Start Date (YYYY-MM-DD): ").strip()
@@ -341,7 +347,6 @@ def request_leave(user):
         except ValueError:
             print("⚠️ Invalid End Date format. Please use YYYY-MM-DD.")
 
-
     while True:
         reason = input("Enter Leave Reason: ").strip()
         if reason:
@@ -351,6 +356,7 @@ def request_leave(user):
     data = read_json_db()
     employees = data.get("employees", [])
     leave_requests = data.get("leave_requests", [])
+    notifications = data.get("notifications", [])
 
     employee = next((e for e in employees if e["id"] == employee_id), None)
     if not employee:
@@ -369,11 +375,25 @@ def request_leave(user):
         "status": "Pending"
     }
     leave_requests.append(new_request)
+
+    # add notification
+    new_notification = {
+        "id": leave_request_id,
+        "employee_id": employee_id,
+        "type": leave_type,
+        "start": start_date,
+        "end": end_date,
+        "reason": reason,
+        "status": "Pending"
+    }
+    notifications.append(new_notification)
+
+    # update JSON data
     data["leave_requests"] = leave_requests
-
+    data["notifications"] = notifications
     save_data(data)
-    print(f"\n✅ Leave request submitted successfully for {employee['name']}!")
 
+    print(f"\n✅ Leave request submitted successfully for {employee['name']}!")
 
 # function to view leave requests
 def view_leave_status(user):

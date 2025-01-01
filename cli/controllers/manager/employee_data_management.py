@@ -27,7 +27,6 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
         "email": email,
         "password": password,
         'role': 'Employee',
-        'notification': []
     }
 
     # append the new employee to the employees list

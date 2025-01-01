@@ -1,4 +1,4 @@
-# Function to calculate performance of employees
+# function to calculate performance of employees
 def calculate_performance(row):
     leave_count = row['leave_total']
     attendance_percentage = (row['attended'] / row['total_attendance']) * 100 if row['total_attendance'] > 0 else 0
