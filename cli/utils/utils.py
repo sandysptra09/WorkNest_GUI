@@ -11,6 +11,8 @@ def read_json_db():
             'admins': [],
             'attendances': [],
             'leave_requests': [],
+            'notifications': [],
+            'comments': [],
         }
     
     try:
@@ -24,6 +26,7 @@ def read_json_db():
             'attendances': [],
             'leave_requests': [],
             'notifications': [],
+            'comments': []
         }
         
 def save_data(data):

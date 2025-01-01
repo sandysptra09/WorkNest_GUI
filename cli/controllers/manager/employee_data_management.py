@@ -27,7 +27,6 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
         "email": email,
         "password": password,
         'role': 'Employee',
-        'notification': []
     }
 
     # append the new employee to the employees list
@@ -82,7 +81,6 @@ def view_employee(employee_id):
     else:
         print("\nEmployee not found.")
 
-        
 # function to view all employees
 def view_all_employees():
     data = read_json_db()

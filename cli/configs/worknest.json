@@ -15,8 +15,7 @@
             "address": "Jl. Merdeka No. 1, Bandung",
             "email": "johndoe@example.com",
             "password": "password123",
-            "role": "Employee",
-            "notifications": []
+            "role": "Employee"
         },
         {
             "id": 2,
@@ -32,8 +31,7 @@
             "address": "Cikarang",
             "email": "radenemployee@gmail.nest",
             "password": "raden1",
-            "role": "Employee",
-            "notifications": []
+            "role": "Employee"
         },
         {
             "id": 3,
@@ -49,8 +47,7 @@
             "address": "Sukabumi",
             "email": "ilyasemployee@gmail.nest",
             "password": "ilyas123",
-            "role": "Employee",
-            "notifications": []
+            "role": "Employee"
         },
         {
             "id": 4,
@@ -66,8 +63,7 @@
             "address": "Alun-alun Banjaran",
             "email": "radensemployee@gmail.nest",
             "password": "radens123",
-            "role": "Employee",
-            "notifications": []
+            "role": "Employee"
         },
         {
             "id": 5,
@@ -83,8 +79,7 @@
             "address": "Cimahi",
             "email": "raihanfauzi@employee.nest",
             "password": "raihan123",
-            "role": "Employee",
-            "notifications": []
+            "role": "Employee"
         },
         {
             "id": 6,
@@ -100,8 +95,7 @@
             "address": "Jl. Susukan Cimahi 10",
             "email": "mizan@upi.edu",
             "password": "mizan123",
-            "role": "Employee",
-            "notifications": []
+            "role": "Employee"
         },
         {
             "id": 7,
@@ -117,8 +111,7 @@
             "address": "Jl. Buah Batu",
             "email": "hilmy@employee.nest",
             "password": "hilmy123",
-            "role": "Employee",
-            "notifications": []
+            "role": "Employee"
         }
     ],
     "admins": [
@@ -137,8 +130,7 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "sandywork@manager.nest",
             "password": "manager1",
-            "role": "Admin",
-            "notifications": []
+            "role": "Admin"
         },
         {
             "id": 2,
@@ -155,8 +147,7 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "ghassanwork@manager.nest",
             "password": "manager2",
-            "role": "Admin",
-            "notifications": []
+            "role": "Admin"
         },
         {
             "id": 3,
@@ -173,8 +164,7 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "iqbalwork@manager.nest",
             "password": "manager3",
-            "role": "Admin",
-            "notifications": []
+            "role": "Admin"
         },
         {
             "id": 4,
@@ -191,8 +181,7 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "raissawork@manager.nest",
             "password": "manager4",
-            "role": "Admin",
-            "notifications": []
+            "role": "Admin"
         }
     ],
     "attendances": [
@@ -312,73 +301,88 @@
     "leave_requests": [
         {
             "leave_request_id": 1,
-            "employee_id": 1,
+            "employee_id": 7,
             "leave_type": "Sick",
-            "start_date": "2024-12-20",
-            "end_date": "2024-12-22",
-            "reason": "Check Health",
-            "applied_on": "2024-12-23",
-            "status": "Approved"
+            "start_date": "2024-12-12",
+            "end_date": "2024-12-15",
+            "reason": "Fever",
+            "applied_on": "2025-01-02T01:28:54.200278",
+            "status": "Pending"
         },
         {
             "leave_request_id": 2,
-            "employee_id": 2,
-            "leave_type": "Sick",
+            "employee_id": 7,
+            "leave_type": "Vacation",
             "start_date": "2024-12-28",
-            "end_date": "2024-12-30",
-            "reason": "Can going to hospital",
-            "applied_on": "2024-12-23T22:34:40.083137",
-            "status": "Approved"
+            "end_date": "2025-01-01",
+            "reason": "Holiday New Year",
+            "applied_on": "2025-01-02T01:39:17.360805",
+            "status": "Pending"
         },
         {
             "leave_request_id": 3,
             "employee_id": 5,
-            "leave_type": "Vacation",
-            "start_date": "2024-12-31",
-            "end_date": "2025-01-02",
-            "reason": "Holiday for new year",
-            "applied_on": "2024-12-25T15:17:53.572154",
-            "status": "Rejected"
-        },
-        {
-            "leave_request_id": 4,
-            "employee_id": 5,
             "leave_type": "Sick",
-            "start_date": "2025-01-21",
-            "end_date": "2025-01-23",
-            "reason": "Watch to fireworks",
-            "applied_on": "2024-12-27T21:53:02.090759",
+            "start_date": "2024-12-06",
+            "end_date": "2024-12-10",
+            "reason": "Headache",
+            "applied_on": "2025-01-02T01:58:18.779948",
+            "status": "Pending"
+        }
+    ],
+    "notifications": [
+        {
+            "id": 1,
+            "employee_id": 7,
+            "type": "Sick",
+            "start": "2024-12-12",
+            "end": "2024-12-15",
+            "reason": "Fever",
             "status": "Pending"
         },
         {
-            "leave_request_id": 5,
+            "id": 2,
+            "employee_id": 7,
+            "type": "Vacation",
+            "start": "2024-12-28",
+            "end": "2025-01-01",
+            "reason": "Holiday New Year",
+            "status": "Pending"
+        },
+        {
+            "id": 3,
             "employee_id": 5,
-            "leave_type": "Sick",
-            "start_date": "2025-01-20",
-            "end_date": "2025-01-22",
-            "reason": "Fever",
-            "applied_on": "2024-12-27T22:15:50.200415",
-            "status": "Approved"
+            "type": "Sick",
+            "start": "2024-12-06",
+            "end": "2024-12-10",
+            "reason": "Headache",
+            "status": "Pending"
+        }
+    ],
+    "comments": [
+        {
+            "comments_id": 1,
+            "employee_id": 7,
+            "subject": "Feedback",
+            "description": "Keep teh good work!",
+            "from": "Manager",
+            "to": "hilmy@employee.nest"
         },
         {
-            "leave_request_id": 6,
-            "employee_id": 7,
-            "leave_type": "Sick",
-            "start_date": "2024-01-09",
-            "end_date": "2024-01-10",
-            "reason": "Fever",
-            "applied_on": "2024-12-28T08:23:46.722001",
-            "status": "Approved"
+            "comments_id": 2,
+            "employee_id": 5,
+            "subject": "Feedback",
+            "description": "Keep teh good work!",
+            "from": "Manager",
+            "to": "raihanfauzi@employee.nest"
         },
         {
-            "leave_request_id": 7,
-            "employee_id": 7,
-            "leave_type": "Vacation",
-            "start_date": "2025-02-15",
-            "end_date": "2025-02-17",
-            "reason": "Want to watch movies",
-            "applied_on": "2024-12-28T08:47:46.255597",
-            "status": "Approved"
+            "comments_id": 3,
+            "employee_id": 3,
+            "subject": "Keep the spirit up my man",
+            "description": "Oh wrong one, mb!",
+            "from": "Manager",
+            "to": "ilyasemployee@gmail.nest"
         }
     ]
 }

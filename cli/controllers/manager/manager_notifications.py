@@ -4,24 +4,24 @@ from utils.utils import read_json_db
 # function to get notifications
 def get_manager_notifications(manager_id):
     data = read_json_db()  
-    leave_requests = data.get("leave_requests", [])
+    notifications_data = data.get("notifications", [])
     notifications = []
 
-    for leave in leave_requests:
-        if leave.get("status") == "Pending":  # Filter berdasarkan status saja
+    for notif in notifications_data:
+        if notif.get("status") == "Pending":  # Filter berdasarkan status Pending
             notifications.append({
-                "id": leave.get("leave_request_id"),
-                "type": leave.get("leave_type", "Unknown Type"),
-                "start": leave.get("start_date", "Unknown Start Date"),
-                "end": leave.get("end_date", "Unknown End Date"),
-                "reason": leave.get("reason", "No reason provided"),
-                "status": leave.get("status", "Unknown Status"),
-                "employee_name": leave.get("employee_name", "Unknown Employee")  # Tambahkan jika tersedia
+                "id": notif.get("id"),
+                "type": notif.get("type", "Unknown Type"),
+                "start": notif.get("start", "Unknown Start Date"),
+                "end": notif.get("end", "Unknown End Date"),
+                "reason": notif.get("reason", "No reason provided"),
+                "status": notif.get("status", "Unknown Status"),
+                "employee_id": notif.get("employee_id")
             })
     
     return notifications
 
-# fucntion show manager notifications
+# function to show manager notifications
 def show_manager_notifications(manager_id):
     notifications = get_manager_notifications(manager_id)
 
@@ -29,7 +29,7 @@ def show_manager_notifications(manager_id):
         print("\n--- 🔔 Notifications ---")
         for i, notif in enumerate(notifications, 1):
             message = (
-                f"Leave request from {notif['employee_name']} ({notif['type']}) "
+                f"Leave request (Type: {notif['type']}) "
                 f"from {notif['start']} to {notif['end']} is currently {notif['status']}."
             )
             print(f"{i}. {message}")
