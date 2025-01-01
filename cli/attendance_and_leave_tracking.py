@@ -32,6 +32,7 @@ def attendance_and_leave_menu():
             print("\n⚠️  Fields must not be empty!. Please select a valid feature!.")
             wait(2)
         elif choice.isdigit():
+            choice = int(choice)
             if choice == 1:
                 print("\n--- 👀 View Attendance Records ---")
                 view_attendance()

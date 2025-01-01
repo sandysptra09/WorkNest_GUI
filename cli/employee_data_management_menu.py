@@ -322,35 +322,41 @@ def manage_employee_data():
                             continue
                         else:
                             break  # Valid address
+                while True:        
+                    save = input("\nSave the changes? (y/n): ").lower()
+                    if not save:
+                        print("\n⚠️  Fields must not be empty!.")
+                        wait(1)
+                    elif save.isalpha():
+                        if save == 'y':
+                            # Pass the updates as keyword arguments
+                            update_employee(
+                                employee_id=employee_id,
+                                name=name,
+                                gender=gender,
+                                birth_place=birth_place,
+                                birth_date=birth_date,
+                                phone=phone,
+                                religion=religion,
+                                marital_status=marital_status,
+                                address=address
+                            )
+                            print(f"\n✔️  Employee ID {employee_id} has been successfully updated.")
+                            wait(2)
+                            break
                         
-                save = input("\nSave the changes? (y/n): ").lower()
-                if not save:
-                    print("\n⚠️  Fields must not be empty!.")
-                    wait(1)
-                elif save.isalpha():
-                    if save == 'y':
-                        # Pass the updates as keyword arguments
-                        update_employee(
-                            employee_id=employee_id,
-                            name=name,
-                            gender=gender,
-                            birth_place=birth_place,
-                            birth_date=birth_date,
-                            phone=phone,
-                            religion=religion,
-                            marital_status=marital_status,
-                            address=address
-                        )
-                        print(f"✔️  Employee ID {employee_id} has been successfully updated.")
-                    
-                    elif save == 'n':
-                        print("❌ Update cancelled.")
-                        wait(2)
-                        continue
+                        elif save == 'n':
+                            print("\n❌ Update cancelled.")
+                            wait(2)
+                            break
+                        else:
+                            print("\n❌ Invalid input. Please enter either 'y' or 'n' to save or cancel the changes.")
+                            wait(2)
+                            continue
                     else:
-                        print("❌ Invalid input. Please enter either 'y' or 'n' to save or cancel the changes.")
-                else:
-                    print("❌ Please only input letters (y/n).")
+                        wait(2)
+                        print("\n❌ Please only input letters (y/n).")
+                        continue
 
 
             elif choice == 5:
@@ -361,8 +367,12 @@ def manage_employee_data():
             elif choice == 6:
                 wait(2)
                 break  
+            
+            else:
+                wait(2)
+                print("\n⚠️ Invalid choice. Please select a valid option (1-7).")
         else:
-            print("\n⚠️  Invalid choice. Please try again.")
+            print("\n⚠️ Please only input numbers (1-6).")
             wait(2)
         
         input("\nPress Enter to return to Employee Data Management menu...")
