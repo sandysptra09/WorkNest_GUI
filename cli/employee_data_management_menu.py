@@ -53,7 +53,7 @@ def manage_employee_data():
                     if len(nip) != 8:  # Check the length of NIP
                         print("❌ NIP must be 8 characters long.")
                         continue
-                    if any(emp['nip'] == nip for emp in employees): # Check if NIP already exists
+                    if any(emp['nip'] == str(nip) for emp in employees): # Check if NIP already exists
                         print(f"❌ NIP '{nip}' already exists. Please use a unique NIP.")
                     else:
                         break  # Valid NIP
@@ -72,7 +72,7 @@ def manage_employee_data():
                     if not (13 <= len(nik) <= 16):  # Check the length of NIK
                         print("❌ NIK must be between 13 and 16 characters long.")
                         continue
-                    if any(emp['nik'] == nik for emp in employees): # Check if NIK already exists
+                    if any(emp['nik'] == str(nik) for emp in employees): # Check if NIK already exists
                         print(f"❌ NIK '{nik}' already exists. Please use a unique NIK.")
                         continue
                     else:

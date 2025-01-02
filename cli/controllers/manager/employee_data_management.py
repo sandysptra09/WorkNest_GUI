@@ -130,30 +130,34 @@ def update_employee(employee_id, **updates):
 
 # function to delete employee with confirmation
 def delete_employee(employee_id):
-    # Ensure employee_id is an integer
-    try:
-        employee_id = int(employee_id)
-    except ValueError:
-        print("Invalid ID. Please enter a numeric value.")
-        return
-
     data = read_json_db()
     employees = data.get("employees", [])
 
-    # Debugging: Verify data
+    # validate if there are employees in the database
     if not employees:
         print("No employees found in the database.")
         return
 
-    # Find the employee
-    employee = next((e for e in employees if e["id"] == employee_id), None)
-    if not employee:
-        print(f"Employee with ID {employee_id} not found in the database.")
-        return
+    while True:
+        employee_id = input("Enter Employee ID to delete: ")
 
-    # Remove employee
-    employees.remove(employee)
-    save_data(data)
-    print(f"🗑️  Deleted Employee: {employee['name']} (ID: {employee_id})")
+        # validate 
+        if not employee_id.isdigit():
+            print("❌ Invalid ID. Please enter a numeric value.")
+            continue
+
+        employee_id = int(employee_id)
+
+        # get employee by ID
+        employee = next((e for e in employees if e["id"] == employee_id), None)
+        if not employee:
+            print(f"❌ Employee with ID {employee_id} not found. Try again.")
+            continue
+
+        # delete employee
+        employees.remove(employee)
+        save_data(data)
+        print(f"🗑️  Deleted Employee: {employee['name']} (ID: {employee_id})")
+        break  # Keluar dari loop setelah berhasil menghapus karyawan
 
 

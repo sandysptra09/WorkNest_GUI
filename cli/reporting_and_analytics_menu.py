@@ -125,6 +125,6 @@ def reporting_and_analytics():
             continue
         
         input("\nPress Enter to return to Reporting and Analytics menu...")
-        break
+        continue
 
 

@@ -73,8 +73,6 @@ def view_attendance():
 
 # function to view leave requests
 def view_leave_requests():
-    print("\nFetching leave requests...")
-
     try:
         data = read_json_db()
         leave_requests = data.get("leave_requests", [])
@@ -112,28 +110,44 @@ def view_leave_requests():
 
 # function to manage leave requests (approve/reject)
 def manage_leave_requests(leave_requests):
-    try:
-        request_id = int(input("Enter Leave Request ID to manage: ").strip())
-        leave_request = next((req for req in leave_requests if req['leave_request_id'] == request_id), None)
+    while True:
+        try:
+            request_id = input("Enter Leave Request ID to manage: ").strip()
+            
+            if not request_id:
+                print("⚠️ Leave Request ID cannot be empty. Please enter a valid ID.")
+                continue
 
-        if leave_request:
-            print(f"\nLeave Request Details:\nType: {leave_request['leave_type']}, Start: {format_date(leave_request['start_date'])}, End: {format_date(leave_request['end_date'])}, Status: {leave_request['status']}")
-            decision = input("Approve or Reject? (approve/reject): ").strip().lower()
+            if not request_id.isdigit():
+                print("⚠️ Invalid input. Please enter a numeric ID.")
+                continue
+            
+            request_id = int(request_id)
 
-            if decision in ["approve", "reject"]:
-                leave_request['status'] = "Approved" if decision == "approve" else "Rejected"
-
-                data = read_json_db()                
-                data['leave_requests'] = leave_requests
-                save_data(data)
+            leave_request = next((req for req in leave_requests if req['leave_request_id'] == request_id), None)
+            if leave_request:
+                print(f"\nLeave Request Details:")
+                print(f"Type: {leave_request['leave_type']}")
+                print(f"Start: {format_date(leave_request['start_date'])}")
+                print(f"End: {format_date(leave_request['end_date'])}")
+                print(f"Status: {leave_request['status']}")
                 
-                print(f"\n✅ Leave request has been {leave_request['status'].lower()}.")
-            else:
-                print("⚠️ Invalid decision. Please choose 'approve' or 'reject'.")
-        else:
-            print(f"⚠️ No leave request found with ID: {request_id}")
-    except ValueError:
-        print("⚠️ Invalid input. Please enter a numeric ID.")
-    except Exception as e:
-        print(f"⚠️ An error occurred: {e}")
+                while True:
+                    decision = input("Approve or Reject? (approve/reject): ").strip().lower()
 
+                    if decision in ["approve", "reject"]:
+                        leave_request['status'] = "Approved" if decision == "approve" else "Rejected"
+                        
+                        # Update data
+                        data = read_json_db()
+                        data['leave_requests'] = leave_requests
+                        save_data(data)
+                        
+                        print(f"\n✅ Leave request has been {leave_request['status'].lower()}.")
+                        return  
+                    else:
+                        print("⚠️ Invalid decision. Please choose 'approve' or 'reject'.")
+            else:
+                print(f"⚠️ No leave request found with ID: {request_id}")
+        except Exception as e:
+            print(f"⚠️ An error occurred: {e}")
