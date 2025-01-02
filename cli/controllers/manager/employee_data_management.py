@@ -56,7 +56,7 @@ def view_employee(employee_id):
         # Convert input ID to integer
         employee_id = int(employee_id)
     except ValueError:
-        print("Invalid ID format. Please enter a numeric ID.")
+        print("\n⚠️ Invalid ID format. Please enter a numeric ID.")
         return
 
     data = read_json_db()
@@ -79,7 +79,7 @@ def view_employee(employee_id):
         print(f"  Address       : {employee['address']}")
         print(f"{'='*60}")
     else:
-        print("\nEmployee not found.")
+        print("\n⚠️ Employee not found.")
 
 # function to view all employees
 def view_all_employees():
@@ -105,7 +105,7 @@ def view_all_employees():
             print(f"Address       : {employee['address']}")
             print(f"{'=' * 60}")
     else:
-        print("\nNo employees found.")
+        print("\n⚠️ No employees found.")
 
 
 
