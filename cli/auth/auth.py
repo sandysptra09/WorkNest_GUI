@@ -1,11 +1,17 @@
-import bcrypt
+import json
 from getpass import getpass
-from configs.db_connection import create_connection
+from utils.utils import read_json_db
+from time import sleep
+
+wait = sleep
 
 def login():
-    try:
-        connection = create_connection()
-        with connection.cursor(dictionary=True) as cursor:
+    data = read_json_db()  
+    # print("Data yang dimuat:", data)
+    chance = 3 
+    while True:
+        sleep(2) 
+        try:
             print("\n" + "=" * 60)
             print("🔐 Login to WorkNest")
             print("=" * 60)
@@ -13,31 +19,37 @@ def login():
             email = input("📧  Email: ").strip()
             password = getpass(" Password: ").strip()
             
-            # query to search for users by email
-            query = "SELECT * FROM employees WHERE email = %s"
-            cursor.execute(query, (email,))
-            user = cursor.fetchone()
-            
-            if user:
-                # validation password
-                hashed_password = user['password']  
+            # find users by email
+            user = None
+            # check in employees
+            for emp in data['employees']:
+                if emp['email'] == email:
+                    user = emp
+                    break
                 
-                # hash password in database
-                if bcrypt.checkpw(password.encode(), hashed_password.encode()):
-                    return user  
-                else:
-                    print("\n❌ Invalid password. Please try again.")
-            else:
-                print("\n❌ User not found. Please check your email.")
+            # check in admins if not found in employees
+            if not user:
+                for admin in data['admins']:
+                    if admin['email'] == email:
+                        user = admin
+                        break
             
             if user:
-                # validating password
-                hashed_password = user
-    
-    except Exception as e:
-        print(f'\n⚠️ Error during login: {e}')
-    finally:
-        connection.close()
+                if password == user['password']:
+                    return user
+                if chance == 1:
+                    print("\n❌ You have reached out the maximum attempt. Please try again later.")
+                    break  
+                else:
+                    print(f"\n❌ Incorrect password. Try again (You have {chance-1} attempts left).")
+                    chance -= 1
+                    continue
+            else:
+                print("\n❌ User not found. Make sure the email you entered is correct. .")
+                continue
         
-    # failed to login
-    return None
+        except Exception as e:
+            print(f'\n⚠️ Error on login: {e}')
+            
+        return None
+

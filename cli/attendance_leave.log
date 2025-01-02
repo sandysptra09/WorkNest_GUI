@@ -22,3 +22,5 @@
 2024-12-16 15:12:21,949:ERROR:Error fetching leave requests: unsupported format string passed to NoneType.__format__
 2024-12-16 15:23:45,225:INFO:Recorded attendance for Employee ID 7 on 2024-12-28.
 2024-12-16 18:36:26,376:INFO:Recorded attendance for Employee ID 13 on 2024-12-12.
+2024-12-16 21:20:36,347:ERROR:Error submitting leave request: 1146 (42S02): Table 'worknest.leave_requests' doesn't exist
+2024-12-16 21:21:41,243:INFO:Leave request submitted for Employee ID 13: Sick from 2024-12-30 to 2025-01-05.
