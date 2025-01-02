@@ -213,12 +213,28 @@ def manage_employee_data():
 
             elif choice == 4:
                 # update employee
-                try:
-                    employee_id = int(input("Enter employee ID: "))
-                except ValueError:
-                    print("Invalid ID. Please enter a numeric value.")
-                    continue
-                
+                while True:
+                    employee_id = input("Enter employee ID: ")
+                    if not employee_id:
+                        print("❌ Employee ID cannot be empty.")
+                        continue
+                    elif employee_id.isdigit():
+                        employee_id = int(employee_id)
+                        
+                        employee_exists = False # Assume employee does not exist
+                        for emp in employees:
+                            if emp['id'] == employee_id:
+                                employee_exists = True
+                                break 
+                        if not employee_exists:
+                            print("❌ Employee ID does not exist.")
+                            continue
+                        break # If ID exists, break the loop
+                        
+                    else:
+                        print("❌ Employee ID must be a number.")
+                        continue
+            
                 while True:
                     name = input("Enter new name (leave blank to keep current): ").strip()
                     if not name:
