@@ -28,20 +28,27 @@ def attendance_and_leave_menu():
         
         data = read_json_db() 
         leave_requests = data.get("leave_requests", [])
-
-        if choice == '1':
-            print("\n--- 👀 View Attendance Records ---")
-            view_attendance()
-        elif choice == '2':
-            print("\n--- 📝 View Leave Requests ---")
-            view_leave_requests()
-        elif choice == '3':
-            print("\n--- 🗒️ Manage Leave Requests ---")
-            manage_leave_requests(leave_requests)
-        elif choice == '4':
-            print("\n--- 🔙 Returning to Admin Dashboard...")
-            break
+        if not choice:
+            print("\n⚠️  Fields must not be empty!. Please select a valid feature!.")
+            wait(2)
+        elif choice.isdigit():
+            choice = int(choice)
+            if choice == 1:
+                print("\n--- 👀 View Attendance Records ---")
+                view_attendance()
+            elif choice == 2:
+                print("\n--- 📝 View Leave Requests ---")
+                view_leave_requests()
+            elif choice == 3:
+                print("\n--- 🗒️ Manage Leave Requests ---")
+                manage_leave_requests(leave_requests)
+            elif choice == 4:
+                print("\n--- 🔙 Returning to Admin Dashboard...")
+                break
+            else:
+                print("\n⚠️ Invalid choice. Please select a valid option (1-4).")
         else:
-            print("\n⚠️ Invalid choice. Please select a valid option (1-4).")
-        
+            print("\n⚠️ Please only input numbers (1-4).")
+            wait(2)
+            
         input("\nPress Enter to return to the menu...")

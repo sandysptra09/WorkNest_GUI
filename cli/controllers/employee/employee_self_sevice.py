@@ -51,10 +51,10 @@ def edit_profile(user):
     while True:
         new_name = input(f"Name ({employee['name']}): ").strip()
         if new_name:  # if not blank, update
-            if not all(part.isalpha() or part.isspace() for part in new_name):
+            if not all(part.isalpha() or part.isspace() for part in new_name): # check if name contains only letters and spaces
                 print("⚠️ Name must contain only alphabets.")
                 continue
-            employee['name'] = new_name
+            employee['name'] = new_name # update name
         break
 
     # edit NIK
@@ -67,7 +67,7 @@ def edit_profile(user):
             if not (13 <= len(new_nik) <= 16):
                 print("⚠️ NIK must be between 13 and 16 characters long.")
                 continue
-            employee['nik'] = new_nik
+            employee['nik'] = new_nik # update NIK
         break
 
     # edit gender
@@ -77,7 +77,7 @@ def edit_profile(user):
             if new_gender not in ['male', 'female']:
                 print("⚠️ Invalid gender. Please enter 'male' or 'female'.")
                 continue
-            employee['gender'] = new_gender
+            employee['gender'] = new_gender # update gender
         break
 
     # edit birth place
@@ -87,7 +87,7 @@ def edit_profile(user):
             if not new_birth_place.isalpha():
                 print("⚠️ Birth place must contain only alphabets.")
                 continue
-            employee['birth_place'] = new_birth_place
+            employee['birth_place'] = new_birth_place # update birth place
         break
 
     # edit birth date
@@ -96,7 +96,7 @@ def edit_profile(user):
         if new_birth_date:  # if not blank, update
             try:
                 datetime.strptime(new_birth_date, '%Y-%m-%d')
-                employee['birth_date'] = new_birth_date
+                employee['birth_date'] = new_birth_date # update birth date
                 break
             except ValueError:
                 print("⚠️ Invalid date format. Please use YYYY-MM-DD.")
@@ -110,7 +110,7 @@ def edit_profile(user):
             if not new_phone.isdigit() or len(new_phone) < 10:
                 print("⚠️ Phone number must contain at least 10 digits and only numbers.")
                 continue
-            employee['phone'] = new_phone
+            employee['phone'] = new_phone # update phone
         else:  # if blank, retain old value
             break
 
@@ -121,7 +121,7 @@ def edit_profile(user):
             if not new_religion.isalpha():
                 print("⚠️ Religion must contain only alphabets.")
                 continue
-            employee['religion'] = new_religion
+            employee['religion'] = new_religion # update religion
         break
 
     # edit marital status
@@ -131,7 +131,7 @@ def edit_profile(user):
             if new_marital_status not in ['single', 'married', 'divorced']:
                 print("⚠️ Invalid marital status. Choose from 'Single', 'Married', or 'Divorced'.")
                 continue
-            employee['marital_status'] = new_marital_status
+            employee['marital_status'] = new_marital_status # update marital status
         break
 
     # edit Address
@@ -141,7 +141,7 @@ def edit_profile(user):
             if len(new_address) < 11:
                 print("⚠️ Address must be at least 11 characters long.")
                 continue
-            employee['address'] = new_address
+            employee['address'] = new_address # update address
         break
 
     # edit Email
@@ -151,7 +151,7 @@ def edit_profile(user):
             if "@employee.nest" not in new_email:
                 print("⚠️ Email must contain '@employee.nest'.")
                 continue
-            employee['email'] = new_email
+            employee['email'] = new_email # update email
         break
 
     # edit password
@@ -161,7 +161,7 @@ def edit_profile(user):
             if len(new_password) < 8:
                 print("⚠️ Password must be at least 8 characters long.")
                 continue
-            employee['password'] = new_password
+            employee['password'] = new_password # update password
         break
 
     save_data(data)
@@ -214,10 +214,12 @@ def record_attendance(user):
     # confirmation: Will the employee attend or not?
     while True:
         confirmation = input("Will you attend today? (yes/no): ").strip().lower()
-        if confirmation in ["yes", "no"]:
+        if not confirmation:
+            print("⚠️ Confirmation must not be empty!. Please answer with 'yes' or 'no'.")
+        elif confirmation in ["yes", "no"]:
             break
         else:
-            print("⚠️ Please answer with 'yes' or 'no'.")
+            print("⚠️ Please answer either with 'yes' or 'no'.")
 
     data = read_json_db()
     employees = data.get("employees", [])
