@@ -6,28 +6,27 @@ import json
 
 wait = sleep 
 
-# Read the JSON database
 data = read_json_db()
 
-# Convert data to DataFrames
+# convert data to DataFrames
 employees_df = pd.DataFrame(data['employees'])
 attendance_df = pd.DataFrame(data['attendances'])
 leave_requests_df = pd.DataFrame(data['leave_requests'])
 
-# Calculate total leaves for each employee
+# calculate total leaves for each employee
 leave_totals = leave_requests_df.groupby('employee_id').size().reset_index(name='leave_total')
 
-# Calculate attendace status
+# calculate attendace status
 attendance_totals = attendance_df.groupby('employee_id').agg(
     total_attendance = ('status', 'count'),
     attended = ('status', lambda x: (x == 'Attend').sum())
 ).reset_index()
 
-# Merge leave totals and attendance totals
+# merge leave totals and attendance totals
 performance_df = pd.merge(leave_totals, attendance_totals, left_on='employee_id', right_on='employee_id', how='left')
 performance_df.fillna(0, inplace=True)  # Fill NaN values with 0
 
-# Apply performance calculation
+# apply performance calculation
 performance_df['overall_performance'] = performance_df.apply(calculate_performance, axis=1)
     
 def reporting_and_analytics():

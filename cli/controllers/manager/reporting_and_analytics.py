@@ -43,7 +43,7 @@ def calculate_performance(row):
         else:
             return 'bad'
         
-# Function to filter by performance and employee ID
+# function to filter by performance and employee ID
 def filter_performance(performance_df, performance=None, employee_id=None):
     if performance:
         performance_df = performance_df[performance_df['overall_performance'] == performance]
