@@ -73,15 +73,11 @@ def reporting_and_analytics():
                         continue
                     elif performance in performance_df['overall_performance'].values:
                         filtered_df = filter_performance(performance_df, performance=performance)
-                        if filtered_df.empty:
-                            print('\n ❌ No data to be filtered.')
-                            break
-                        else:
+                        if not filtered_df.empty:
                             print(filtered_df.to_string(index=False))
                             break
                     else:
-                        print("\n ❌ Performance does not exist!. Please enter a valid performance!")
-                        continue
+                        print("\n ❌ No data to be filtered.")
             elif choice == 3:
                 while True:
                     employee_id = input("\n Enter Employee ID: ").strip()
@@ -126,6 +122,6 @@ def reporting_and_analytics():
             continue
         
         input("\nPress Enter to return to Reporting and Analytics menu...")
-        break
+        continue
 
 
