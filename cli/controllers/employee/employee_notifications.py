@@ -10,7 +10,7 @@ def get_notifications(employee_id):
     ]
     return notifications
 
-# Fungsi untuk mengambil komentar berdasarkan employee_id
+# fungsi untuk mengambil komentar berdasarkan employee_id
 def get_comments(employee_id):
     data = read_json_db()
     all_comments = data.get("comments", [])
