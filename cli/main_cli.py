@@ -19,7 +19,9 @@ def main():
         print("│ ✨  Role: {:<52}│".format(user['role'].capitalize()))
         print("└" + "─" * 63 + "┘")
         
-        if user['role'] == 'admin':  
+        role = user['role'].lower()
+
+        if role == 'admin':  
             admin_dashboard(user)  
         else:
             employee_dashboard(user)  

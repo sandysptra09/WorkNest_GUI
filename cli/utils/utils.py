@@ -35,4 +35,4 @@ def save_data(data):
             json.dump(data, file, indent=4)
         # print("Data berhasil disimpan ke worknest.json")
     except Exception as e:
-        print(f"Terjadi kesalahan saat menyimpan data ke file JSON: {e}")
+        print(f"Terjadi kesalahan saat menyimpan data ke file JSON: {e}") # Handle Error

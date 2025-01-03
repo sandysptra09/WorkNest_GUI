@@ -116,17 +116,17 @@
         {
             "id": 8,
             "nip": "14120001",
-            "nik": "320441141248690",
-            "name": "Leonardo Da Vinci",
+            "nik": "32091876657778",
+            "name": "Diaz",
             "gender": "male",
-            "birth_place": "Bandung",
-            "birth_date": "2002-02-12",
-            "phone": "081333145199",
+            "birth_place": "Japan",
+            "birth_date": "2005-06-07",
+            "phone": "081223432833",
             "religion": "Islamic",
             "marital_status": "single",
-            "address": "Jl. Cipaganti No. 12",
+            "address": "Jl. shibuya No.15",
             "email": "leonardo@employee.nest",
-            "password": "leonardo123",
+            "password": "leonardo456",
             "role": "Employee"
         }
     ],
@@ -319,6 +319,30 @@
             "check_in": null,
             "check_out": null,
             "status": "Absent"
+        },
+        {
+            "attendance_id": 15,
+            "employee_id": 8,
+            "attendance_date": "2024-07-06",
+            "check_in": "06:15:00",
+            "check_out": "17:00:00",
+            "status": "Attend"
+        },
+        {
+            "attendance_id": 16,
+            "employee_id": 8,
+            "attendance_date": "2024-06-06",
+            "check_in": "06:00:00",
+            "check_out": "17:00:00",
+            "status": "Attend"
+        },
+        {
+            "attendance_id": 17,
+            "employee_id": 8,
+            "attendance_date": "2024-05-05",
+            "check_in": "22:00:00",
+            "check_out": "23:00:00",
+            "status": "Attend"
         }
     ],
     "leave_requests": [
@@ -351,6 +375,16 @@
             "reason": "Headache",
             "applied_on": "2025-01-02T01:58:18.779948",
             "status": "Pending"
+        },
+        {
+            "leave_request_id": 4,
+            "employee_id": 8,
+            "leave_type": "Personal",
+            "start_date": "2024-10-12",
+            "end_date": "2024-10-20",
+            "reason": "Birthday party",
+            "applied_on": "2025-01-03T22:01:50.947839",
+            "status": "Pending"
         }
     ],
     "notifications": [
@@ -379,6 +413,15 @@
             "start": "2024-12-06",
             "end": "2024-12-10",
             "reason": "Headache",
+            "status": "Pending"
+        },
+        {
+            "id": 4,
+            "employee_id": 8,
+            "type": "Personal",
+            "start": "2024-10-12",
+            "end": "2024-10-20",
+            "reason": "Birthday party",
             "status": "Pending"
         }
     ],
@@ -428,6 +471,22 @@
             "employee_id": 5,
             "subject": "Feedback",
             "description": "Good work, Kerennn",
+            "from": "Manager",
+            "to": "raihanfauzi@employee.nest"
+        },
+        {
+            "comments_id": 7,
+            "employee_id": 8,
+            "subject": "good",
+            "description": "nice dude you are great",
+            "from": "Manager",
+            "to": "leonardo@employee.nest"
+        },
+        {
+            "comments_id": 8,
+            "employee_id": 5,
+            "subject": "Leonardo",
+            "description": "Kinerja kamu bagus disini, mau naik gaji atau naik posisi",
             "from": "Manager",
             "to": "raihanfauzi@employee.nest"
         }
