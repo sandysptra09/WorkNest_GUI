@@ -19,6 +19,10 @@ def login():
             email = input("📧  Email: ").strip()
             password = getpass(" Password: ").strip()
             
+            if "@" not in email:
+                print("\n❌ Invalid!. Email must contain '@'.")
+                continue
+            
             # find users by email
             user = None
             # check in employees

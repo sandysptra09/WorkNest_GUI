@@ -53,7 +53,7 @@ def manage_employee_data():
                     if len(nip) != 8:  # Check the length of NIP
                         print("❌ NIP must be 8 characters long.")
                         continue
-                    if any(emp['nip'] == nip for emp in employees): # Check if NIP already exists
+                    if any(emp['nip'] == str(nip) for emp in employees): # Check if NIP already exists
                         print(f"❌ NIP '{nip}' already exists. Please use a unique NIP.")
                     else:
                         break  # Valid NIP
@@ -72,7 +72,7 @@ def manage_employee_data():
                     if not (13 <= len(nik) <= 16):  # Check the length of NIK
                         print("❌ NIK must be between 13 and 16 characters long.")
                         continue
-                    if any(emp['nik'] == nik for emp in employees): # Check if NIK already exists
+                    if any(emp['nik'] == str(nik) for emp in employees): # Check if NIK already exists
                         print(f"❌ NIK '{nik}' already exists. Please use a unique NIK.")
                         continue
                     else:
@@ -213,12 +213,28 @@ def manage_employee_data():
 
             elif choice == 4:
                 # update employee
-                try:
-                    employee_id = int(input("Enter employee ID: "))
-                except ValueError:
-                    print("Invalid ID. Please enter a numeric value.")
-                    continue
-                
+                while True:
+                    employee_id = input("Enter employee ID: ")
+                    if not employee_id:
+                        print("❌ Employee ID cannot be empty.")
+                        continue
+                    elif employee_id.isdigit():
+                        employee_id = int(employee_id)
+                        
+                        employee_exists = False # Assume employee does not exist
+                        for emp in employees:
+                            if emp['id'] == employee_id:
+                                employee_exists = True
+                                break 
+                        if not employee_exists:
+                            print("❌ Employee ID does not exist.")
+                            continue
+                        break # If ID exists, break the loop
+                        
+                    else:
+                        print("❌ Employee ID must be a number.")
+                        continue
+            
                 while True:
                     name = input("Enter new name (leave blank to keep current): ").strip()
                     if not name:

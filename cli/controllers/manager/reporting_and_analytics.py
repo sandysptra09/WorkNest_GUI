@@ -33,7 +33,7 @@ def calculate_performance(row):
             return 'average'
         else:
             return 'bad'
-    else:  # More than 5 leaves
+    else:  
         if attendance_percentage > 95:
             return 'very good'
         elif 85 <= attendance_percentage <= 95:
@@ -43,7 +43,7 @@ def calculate_performance(row):
         else:
             return 'bad'
         
-# Function to filter by performance and employee ID
+# function to filter by performance and employee ID
 def filter_performance(performance_df, performance=None, employee_id=None):
     if performance:
         performance_df = performance_df[performance_df['overall_performance'] == performance]
@@ -55,22 +55,21 @@ def filter_performance(performance_df, performance=None, employee_id=None):
 def add_reports(employee_id, subject, description):
     data = read_json_db()
 
-    # Mengambil daftar karyawan jika ada, jika tidak maka kembalikan daftar kosong
     employees = data.get("employees", [])
 
-    # Validasi bahwa 'employees' ada dan bukan kosong
+    # validate that 'employees' exists and is not empty
     if not employees:
         print("\n❌ No employees data found in the database.")
         return
 
-    # Validasi bahwa 'employee_id' adalah angka valid
+    # validate that 'employee_id' is a valid number
     try:
         employee_id = int(employee_id)  # Pastikan employee_id adalah integer
     except ValueError:
         print("\n❌ Employee ID must be a valid integer!")
         return
 
-    # Temukan employee berdasarkan ID dengan validasi untuk menghindari None pada 'employee_id'
+    # find employee by ID with validation to avoid None in 'employee_id'
     employee = next((emp for emp in employees if emp.get('id') == employee_id), None)
     
     if not employee:
@@ -79,10 +78,9 @@ def add_reports(employee_id, subject, description):
 
     to_email = employee.get('email', 'N/A')
 
-    # Generate comment ID
+    # generate comment ID
     comment_id = len(data.get('comments', [])) + 1
 
-    # Buat entri komentar
     comment = {
         "comments_id": comment_id,
         "employee_id": employee_id,
@@ -92,7 +90,6 @@ def add_reports(employee_id, subject, description):
         "to": to_email
     }
 
-    # Tambahkan komentar ke 'comments'
     if 'comments' not in data:
         data['comments'] = []
     data['comments'].append(comment)

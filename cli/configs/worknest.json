@@ -112,6 +112,22 @@
             "email": "hilmy@employee.nest",
             "password": "hilmy123",
             "role": "Employee"
+        },
+        {
+            "id": 8,
+            "nip": "14120001",
+            "nik": "320441141248690",
+            "name": "Leonardo Da Vinci",
+            "gender": "male",
+            "birth_place": "Bandung",
+            "birth_date": "2002-02-12",
+            "phone": "081333145199",
+            "religion": "Islamic",
+            "marital_status": "single",
+            "address": "Jl. Cipaganti No. 12",
+            "email": "leonardo@employee.nest",
+            "password": "leonardo123",
+            "role": "Employee"
         }
     ],
     "admins": [
@@ -181,6 +197,13 @@
             "address": "Jl. Raya No. 10, Jakarta",
             "email": "raissawork@manager.nest",
             "password": "manager4",
+            "role": "Admin"
+        },
+        {
+            "id": 5,
+            "name": "Admin Manager",
+            "email": "adminwork@manager.nest",
+            "password": "adminmanager123",
             "role": "Admin"
         }
     ],
@@ -383,6 +406,30 @@
             "description": "Oh wrong one, mb!",
             "from": "Manager",
             "to": "ilyasemployee@gmail.nest"
+        },
+        {
+            "comments_id": 4,
+            "employee_id": 5,
+            "subject": "Feedback",
+            "description": "Good work young boyy!!",
+            "from": "Manager",
+            "to": "raihanfauzi@employee.nest"
+        },
+        {
+            "comments_id": 5,
+            "employee_id": 5,
+            "subject": "GG",
+            "description": "Mantappp jiwaaaa",
+            "from": "Manager",
+            "to": "raihanfauzi@employee.nest"
+        },
+        {
+            "comments_id": 6,
+            "employee_id": 5,
+            "subject": "Feedback",
+            "description": "Good work, Kerennn",
+            "from": "Manager",
+            "to": "raihanfauzi@employee.nest"
         }
     ]
 }
