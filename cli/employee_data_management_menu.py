@@ -294,10 +294,10 @@ def manage_employee_data():
                         phone = None
                         break # No change in phone
                     if phone:
-                        if not phone.isdigit(): # Check if phone contains only digits
+                        if not phone.isdigit(): # check if phone contains only digits
                             print("❌ Phone must contain only digits.")
                             continue
-                        elif len(phone) <= 10: # Check if phone has 10 digits or less
+                        elif len(phone) <= 10: # check if phone has 10 digits or less
                             print("❌ Phone number must be at least 10 digits long.")
                             continue
                         else:

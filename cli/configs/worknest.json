@@ -319,6 +319,14 @@
             "check_in": null,
             "check_out": null,
             "status": "Absent"
+        },
+        {
+            "attendance_id": 15,
+            "employee_id": 7,
+            "attendance_date": "2025-01-03",
+            "check_in": "07:12:00",
+            "check_out": "16:10:00",
+            "status": "Attend"
         }
     ],
     "leave_requests": [
@@ -330,7 +338,7 @@
             "end_date": "2024-12-15",
             "reason": "Fever",
             "applied_on": "2025-01-02T01:28:54.200278",
-            "status": "Pending"
+            "status": "Rejected"
         },
         {
             "leave_request_id": 2,
@@ -379,6 +387,15 @@
             "start": "2024-12-06",
             "end": "2024-12-10",
             "reason": "Headache",
+            "status": "Pending"
+        },
+        {
+            "id": 4,
+            "employee_id": 7,
+            "type": "Sick",
+            "start": "2025-01-10",
+            "end": "2025-01-15",
+            "reason": "Fever",
             "status": "Pending"
         }
     ],
