@@ -322,26 +322,10 @@
         },
         {
             "attendance_id": 15,
-            "employee_id": 8,
-            "attendance_date": "2024-07-06",
-            "check_in": "06:15:00",
-            "check_out": "17:00:00",
-            "status": "Attend"
-        },
-        {
-            "attendance_id": 16,
-            "employee_id": 8,
-            "attendance_date": "2024-06-06",
-            "check_in": "06:00:00",
-            "check_out": "17:00:00",
-            "status": "Attend"
-        },
-        {
-            "attendance_id": 17,
-            "employee_id": 8,
-            "attendance_date": "2024-05-05",
-            "check_in": "22:00:00",
-            "check_out": "23:00:00",
+            "employee_id": 7,
+            "attendance_date": "2025-01-03",
+            "check_in": "07:12:00",
+            "check_out": "16:10:00",
             "status": "Attend"
         }
     ],
@@ -354,7 +338,7 @@
             "end_date": "2024-12-15",
             "reason": "Fever",
             "applied_on": "2025-01-02T01:28:54.200278",
-            "status": "Pending"
+            "status": "Rejected"
         },
         {
             "leave_request_id": 2,
@@ -413,15 +397,6 @@
             "start": "2024-12-06",
             "end": "2024-12-10",
             "reason": "Headache",
-            "status": "Pending"
-        },
-        {
-            "id": 4,
-            "employee_id": 8,
-            "type": "Personal",
-            "start": "2024-10-12",
-            "end": "2024-10-20",
-            "reason": "Birthday party",
             "status": "Pending"
         }
     ],
