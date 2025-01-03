@@ -59,4 +59,5 @@ def manage_employee_self_service(user):
             wait(2)
         
         input("\nPress Enter to return to Employee Self-Service menu...")
+        
 
