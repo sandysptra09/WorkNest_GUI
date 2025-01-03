@@ -29,24 +29,31 @@ def admin_dashboard(user):
         print("└───────────────────────────────────────────────────────────────┘")
         
         choice = input("\nPlease select a feature (1-5): ").strip()
-        if choice == '1':
-            print("\n--- 📋 Employee Data Management ---")
-            manage_employee_data()
-        elif choice == '2':
-            print("\n--- 🕒 Attendance and Leave Tracking ---")
-            attendance_and_leave_menu()
-        elif choice == '3':
-            print("\n--- 📊 Reporting and Analytics ---")
-            reporting_and_analytics()
-        elif choice == '4':
-            print("\n--- 🔔 Notifications ---")
-            show_manager_notifications(user["id"])
-        elif choice == '5':
-            print("\nLogging out...")
-            wait(3)
-            break
-        else:
-            print("\n⚠️ Invalid choice. Please select a valid option (1-5).")
+        if not choice:
+            print("\n⚠️  Fields must not be empty!. Please select a valid feature!.")
             wait(2)
+        elif choice.isdigit():
+            choice = int(choice)
+            if choice == 1:
+                print("\n--- 📋 Employee Data Management ---")
+                manage_employee_data()
+            elif choice == 2:
+                print("\n--- 🕒 Attendance and Leave Tracking ---")
+                attendance_and_leave_menu()
+            elif choice == 3:
+                print("\n--- 📊 Reporting and Analytics ---")
+                reporting_and_analytics()
+            elif choice == 4:
+                print("\n--- 🔔 Notifications ---")
+                show_manager_notifications(user["id"])
+            elif choice == 5:
+                print("\nLogging out...")
+                wait(3)
+                break
+            else:
+                print("\n⚠️ Invalid choice. Please select a valid option (1-5).")
+                wait(2)
+        else:
+            print("\n⚠️ Invalid input. Please enter only number!.")
         
         input("\nPress Enter to return to the admin dashboard...")

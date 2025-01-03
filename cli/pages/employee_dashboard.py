@@ -32,17 +32,24 @@ def employee_dashboard(user):
         print("└───────────────────────────────────────────────────────────────┘")
         
         choice = input("\nPlease select a feature (1-3): ").strip()
-        if choice == '1':
-            print("\n--- 🛠️ Employee Self-Service ---")
-            manage_employee_self_service(user)
-        elif choice == '2':
-            show_employee_notifications(user["id"])
-        elif choice == '3':
-            print("\nLogging out...")
-            wait(3)
-            break
+        if not choice:
+            print("\n⚠️  Fields must not be empty!. Please select a valid feature!.")
+            wait(2)            
+        elif choice.isdigit():
+            choice = int(choice)
+            if choice == 1:
+                print("\n--- 🛠️ Employee Self-Service ---")
+                manage_employee_self_service(user)
+            elif choice == 2:
+                show_employee_notifications(user["id"])
+            elif choice == 3:
+                print("\nLogging out...")
+                wait(3)
+                break
+            else:
+                print("\n⚠️ Invalid choice. Please select a valid option (1-3).")
+                wait(2)
         else:
-            print("\n⚠️ Invalid choice. Please select a valid option (1-3).")
-            wait(2)
+            print("\n⚠️ Invalid choice. Please enter only number!.")
         
         input("\nPress Enter to return to the employee dashboard...")
