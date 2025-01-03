@@ -113,6 +113,7 @@ def edit_profile(user):
             employee['phone'] = new_phone # update phone
         else:  # if blank, retain old value
             break
+        break
 
     # edit religion
     while True:

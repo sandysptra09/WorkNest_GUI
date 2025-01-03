@@ -53,3 +53,5 @@ def employee_dashboard(user):
             print("\n⚠️ Invalid choice. Please enter only number!.")
         
         input("\nPress Enter to return to the employee dashboard...")
+        print("\n--- 🔙 Returning Back to Dashboard.")
+        wait(2)
