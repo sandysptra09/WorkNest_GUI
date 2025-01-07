@@ -297,7 +297,7 @@ def manage_employee_data():
                         if not phone.isdigit(): # check if phone contains only digits
                             print("❌ Phone must contain only digits.")
                             continue
-                        elif len(phone) <= 10: # check if phone has 10 digits or less
+                        elif len(phone) < 10: # check if phone has 10 digits or less
                             print("❌ Phone number must be at least 10 digits long.")
                             continue
                         else:
@@ -377,8 +377,8 @@ def manage_employee_data():
 
             elif choice == 5:
                 # delete Employee
-                employee_id = input("Enter employee ID: ")
-                delete_employee(employee_id)
+                # employee_id = input("Enter employee ID: ")
+                delete_employee()
 
             elif choice == 6:
                 wait(2)

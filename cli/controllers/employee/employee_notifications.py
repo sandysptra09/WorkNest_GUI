@@ -1,7 +1,7 @@
 import json
 from utils.utils import read_json_db
 
-# Fungsi untuk mengambil notifikasi
+# functions to retrieve notifications
 def get_notifications(employee_id):
     data = read_json_db()
     all_notifications = data.get("notifications", [])
@@ -10,7 +10,7 @@ def get_notifications(employee_id):
     ]
     return notifications
 
-# Fungsi untuk mengambil komentar berdasarkan employee_id
+# function to retrieve comments based on employee_id
 def get_comments(employee_id):
     data = read_json_db()
     all_comments = data.get("comments", [])

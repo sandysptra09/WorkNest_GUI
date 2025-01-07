@@ -53,7 +53,7 @@ def add_employee(nip, nik, name, gender, birth_place, birth_date, phone, religio
 # function to view employee details by ID
 def view_employee(employee_id):
     try:
-        # Convert input ID to integer
+        # convert input ID to integer
         employee_id = int(employee_id)
     except ValueError:
         print("\n⚠️ Invalid ID format. Please enter a numeric ID.")
@@ -61,7 +61,7 @@ def view_employee(employee_id):
 
     data = read_json_db()
     
-    # Find the employee with matching ID
+    # find the employee with matching ID
     employee = next((e for e in data["employees"] if e["id"] == employee_id), None)
     
     if employee:
@@ -129,7 +129,7 @@ def update_employee(employee_id, **updates):
 
 
 # function to delete employee with confirmation
-def delete_employee(employee_id):
+def delete_employee():
     data = read_json_db()
     employees = data.get("employees", [])
 
@@ -158,6 +158,6 @@ def delete_employee(employee_id):
         employees.remove(employee)
         save_data(data)
         print(f"🗑️  Deleted Employee: {employee['name']} (ID: {employee_id})")
-        break  # Keluar dari loop setelah berhasil menghapus karyawan
+        break  
 
 

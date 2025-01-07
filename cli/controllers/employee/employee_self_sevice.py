@@ -50,53 +50,63 @@ def edit_profile(user):
     # edit name
     while True:
         new_name = input(f"Name ({employee['name']}): ").strip()
-        if new_name:  # if not blank, update
+        # if not blank, update
+        if new_name:  
             if not all(part.isalpha() or part.isspace() for part in new_name): # check if name contains only letters and spaces
                 print("⚠️ Name must contain only alphabets.")
                 continue
-            employee['name'] = new_name # update name
+            # update name
+            employee['name'] = new_name 
         break
 
     # edit NIK
     while True:
         new_nik = input(f"NIK ({employee['nik']}): ").strip()
-        if new_nik:  # if not blank, update
+        # if not blank, update
+        if new_nik:  
             if not new_nik.isdigit():
                 print("⚠️ NIK must be an integer.")
                 continue
             if not (13 <= len(new_nik) <= 16):
                 print("⚠️ NIK must be between 13 and 16 characters long.")
                 continue
-            employee['nik'] = new_nik # update NIK
+            # update NIK
+            employee['nik'] = new_nik 
         break
 
     # edit gender
     while True:
         new_gender = input(f"Gender ({employee['gender']}): ").strip().lower()
-        if new_gender:  # if not blank, update
+        # if not blank, update
+        if new_gender:  
             if new_gender not in ['male', 'female']:
                 print("⚠️ Invalid gender. Please enter 'male' or 'female'.")
                 continue
-            employee['gender'] = new_gender # update gender
+            # update gender
+            employee['gender'] = new_gender 
         break
 
     # edit birth place
     while True:
         new_birth_place = input(f"Birth Place ({employee['birth_place']}): ").strip()
-        if new_birth_place:  # if not blank, update
+        # if not blank, update
+        if new_birth_place:  
             if not new_birth_place.isalpha():
                 print("⚠️ Birth place must contain only alphabets.")
                 continue
-            employee['birth_place'] = new_birth_place # update birth place
+            # update birth place
+            employee['birth_place'] = new_birth_place 
         break
 
     # edit birth date
     while True:
         new_birth_date = input(f"Birth Date ({employee['birth_date']}): ").strip()
-        if new_birth_date:  # if not blank, update
+        # if not blank, update
+        if new_birth_date:  
             try:
                 datetime.strptime(new_birth_date, '%Y-%m-%d')
-                employee['birth_date'] = new_birth_date # update birth date
+                # update birth date
+                employee['birth_date'] = new_birth_date 
                 break
             except ValueError:
                 print("⚠️ Invalid date format. Please use YYYY-MM-DD.")
@@ -106,11 +116,13 @@ def edit_profile(user):
     # edit phone
     while True:
         new_phone = input(f"Phone ({employee['phone']}): ").strip()
-        if new_phone:  # if not blank, update
+        # if not blank, update
+        if new_phone:  
             if not new_phone.isdigit() or len(new_phone) < 10:
                 print("⚠️ Phone number must contain at least 10 digits and only numbers.")
                 continue
-            employee['phone'] = new_phone # update phone
+            # update phone
+            employee['phone'] = new_phone 
         else:  # if blank, retain old value
             break
         break
@@ -118,17 +130,19 @@ def edit_profile(user):
     # edit religion
     while True:
         new_religion = input(f"Religion ({employee['religion']}): ").strip()
-        if new_religion:  # if not blank, update
+        # if not blank, update
+        if new_religion:  
             if not new_religion.isalpha():
                 print("⚠️ Religion must contain only alphabets.")
                 continue
-            employee['religion'] = new_religion # update religion
+            # update religion
+            employee['religion'] = new_religion 
         break
 
     # edit marital status
     while True:
         new_marital_status = input(f"Marital Status ({employee['marital_status']}): ").strip().lower()
-        if new_marital_status:  # if not blank, update
+        if new_marital_status:  
             if new_marital_status not in ['single', 'married', 'divorced']:
                 print("⚠️ Invalid marital status. Choose from 'Single', 'Married', or 'Divorced'.")
                 continue
@@ -148,21 +162,25 @@ def edit_profile(user):
     # edit Email
     while True:
         new_email = input(f"Email ({employee['email']}): ").strip()
-        if new_email:  # if not blank, update
+        # if not blank, update
+        if new_email:  
             if "@employee.nest" not in new_email:
                 print("⚠️ Email must contain '@employee.nest'.")
                 continue
-            employee['email'] = new_email # update email
+             # update email
+            employee['email'] = new_email
         break
 
     # edit password
     while True:
         new_password = input(f"Password: ").strip()
-        if new_password:  # if not blank, update
+         # if not blank, update
+        if new_password: 
             if len(new_password) < 8:
                 print("⚠️ Password must be at least 8 characters long.")
                 continue
-            employee['password'] = new_password # update password
+            # update password
+            employee['password'] = new_password 
         break
 
     save_data(data)
@@ -238,7 +256,7 @@ def record_attendance(user):
             return
 
     if confirmation == "no":
-        # Record absence
+        # record absence
         attendance_id = len(attendances) + 1
         new_record = {
             "attendance_id": attendance_id,
