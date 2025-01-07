@@ -23,7 +23,7 @@ def employee_dashboard(user):
         
         print("\n")
         print("┌───────────────────────────────────────────────────────────────┐")
-        print(f"│  Hello, {user['name']}!                                         │")
+        print(f"│  Hello, {user['name']}!                                               │")
         print(f"│  You have {total_notifications_count} new notification(s)!!                             │")
         print("│                                                               │")
         print("│  1. 🛠️  - Employee Self-Service                                │")

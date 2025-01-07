@@ -15,6 +15,18 @@ def format_time(time_str):
         return datetime.strptime(time_str, "%H:%M:%S").strftime("%I:%M %p")
     except ValueError:
         return time_str
+    
+def bubble_sort_by_date(records): # bubble sorting untuk attendance date
+    n = len(records)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            # Konversi tanggal ke objek datetime untuk perbandingan
+            date1 = datetime.strptime(records[j]["attendance_date"], "%Y-%m-%d")
+            date2 = datetime.strptime(records[j + 1]["attendance_date"], "%Y-%m-%d")
+            if date1 > date2:
+                # Tukar posisi jika tanggal lebih besar
+                records[j], records[j + 1] = records[j + 1], records[j]
+    return records
 
 # function to view attendance records
 def view_attendance():
@@ -29,6 +41,9 @@ def view_attendance():
             print("\nNo attendance records found.")
             return
 
+        # Sorting attendance records by date
+        attendances = bubble_sort_by_date(attendances)
+        
         # pagination setup
         limit = 10
         offset = 0

@@ -168,6 +168,17 @@ def edit_profile(user):
     save_data(data)
     print("\n✅ Profile updated successfully!")
 
+def bubble_sort_by_date(records): # bubble sorting untuk attendance date
+    n = len(records)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            # Konversi tanggal ke objek datetime untuk perbandingan
+            date1 = datetime.strptime(records[j]["attendance_date"], "%Y-%m-%d")
+            date2 = datetime.strptime(records[j + 1]["attendance_date"], "%Y-%m-%d")
+            if date1 > date2:
+                # Tukar posisi jika tanggal lebih besar
+                records[j], records[j + 1] = records[j + 1], records[j]
+    return records
 
 # function to view attendance records
 def view_attendance(user):
@@ -175,6 +186,7 @@ def view_attendance(user):
     print("\n--- 📅 View Attendance Records ---")
     data = read_json_db()
     attendances = data['attendances']
+    attendances =  bubble_sort_by_date(attendances)
     user_attendance = [att for att in attendances if att['employee_id'] == user['id']]
 
     if user_attendance:
